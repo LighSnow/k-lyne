@@ -15,6 +15,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
   const openClose = (e) => {
+    footerAccordion.forEach(item => {
+      const accordionWrapper = item.parentNode;
+      // item.addEventListener('click', () => {
+      //   getClass(accordionWrapper);
+      // });
+      if (item.contains(e.target)) {
+        getClass(accordionWrapper)
+      }
+    });
 
     let userParent = user.parentNode;
     accordionArrow.forEach(arrow => {
@@ -49,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (width <= 916) {
       console.log(width);
       document.addEventListener('click', openClose);
+
     } else {
       // body.classList.remove('active');
       removeClass(menu);
@@ -56,52 +66,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
   onresize();
-  footerAccordion.forEach(item => {
-    const accordionWrapper = item.parentNode;
-    item.addEventListener('click', () => {
-      getClass(accordionWrapper);
-    });
-  });
+
 
   window.addEventListener("resize", onresize);
   window.addEventListener("load", onresize);
   // window.addEventListener("load", onresize);
 
 
-
-
-
-  // function openClose(e) {
-  //   accordionArrow.forEach(arrow => {
-  //     const arrowParent = arrow.parentNode;
-  //     if (arrow.contains(e.target)) {
-  //       arrowParent.classList.toggle('active');
-  //     }
-  //   });
-
-  //   if (burger.contains(e.target)) {
-  //     // openMenu(e);
-  //     // getClass(menu);
-  //     menu.classList.add('active');
-  //     body.classList.add('active');
-  //   } else if (!menu.contains(e.target) || menuClose.contains(e.target)) {
-  //     if (!user.classList.contains(e.target)) {
-  //       user.classList.remove('active');
-  //     }
-  //     menu.classList.remove('active');
-  //     body.classList.remove('active');
-
-  //     accordionArrow.forEach(arrow => {
-  //       arrow.parentNode.classList.remove('active');
-  //     });
-  //   } else if (user.contains(e.target)) {
-  //     if (!user.classList.contains('active')) {
-  //       user.classList.add('active');
-  //     } else {
-  //       user.classList.remove('active');
-  //     }
-  //   }
-  // }
 
   // Динамический адаптив
 
@@ -222,9 +193,9 @@ document.addEventListener('DOMContentLoaded', function () {
   da.init();
 
   let sliderInner = document.querySelector('.slider__inner');
-  let nextBtn = sliderInner.querySelector('.swiper-button-next');
-  let prevBtn = sliderInner.querySelector('.swiper-button-prev');
-  let sliderContainer = sliderInner.querySelector('.swiper-container1');
+  let nextBtn = document.querySelector('.swiper-button-next');
+  let prevBtn = document.querySelector('.swiper-button-prev');
+  let sliderContainer = document.querySelector('.swiper-container1');
 
   let swiper = new Swiper(sliderContainer, {
     slidesPerView: 'auto',
@@ -250,10 +221,6 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
-  const sliders = document.querySelectorAll('.swiper-container');
-
-
-
   const ourWorksSlider = document.querySelector('.our-works__slider');
   const reviewSlider = document.querySelector('.reviews-swiper');
 
@@ -261,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function () {
     slidesPerView: 'auto',
     spaceBetween: 10,
     centeredSlides: true,
-    loop: false,
+    loop: true,
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
@@ -312,7 +279,7 @@ document.addEventListener('DOMContentLoaded', function () {
       },
     },
   });
-
+  const sliders = document.querySelectorAll('.swiper-container');
   // createSwipe(reviewSlider, 2, 30);
   const slidersSwipe = [];
   sliders.forEach(el => {
@@ -328,7 +295,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     slidersSwipe.push(mySwiper);
   });
-  console.log(slidersSwipe);
+  console.log(sliders);
 
   // 2 of 4 : PHOTOSWIPE #######################################
   // https://photoswipe.com/documentation/getting-started.html //
