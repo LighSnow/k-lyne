@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (width <= 916) {
       console.log(width);
+      document.addEventListener('click', openClose);
     } else {
       // body.classList.remove('active');
       removeClass(menu);
@@ -61,8 +62,9 @@ document.addEventListener('DOMContentLoaded', function () {
       getClass(accordionWrapper);
     });
   });
-  document.addEventListener('click', openClose);
+
   window.addEventListener("resize", onresize);
+  window.addEventListener("load", onresize);
   // window.addEventListener("load", onresize);
 
 

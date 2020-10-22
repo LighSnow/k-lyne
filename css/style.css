@@ -224,13 +224,13 @@ img {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 .content {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 100%;
-          flex: 0 1 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
 }
 
 .box {
@@ -1552,9 +1552,6 @@ svg {
       -ms-flex-align: center;
           align-items: center;
   padding: 0px 0px 0px 100px;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
 }
 
 .reviews__footer img {
@@ -2542,6 +2539,11 @@ svg {
         -ms-flex-align: center;
             align-items: center;
     padding: 25px 0 50px;
+  }
+
+  .footer__columns-title {
+    margin: 0;
+    padding: 5px 0px;
   }
 
   .footer__columns-title .arrow-down {
