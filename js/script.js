@@ -48,14 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (width <= 916) {
       console.log(width);
-      window.addEventListener('click', openClose);
-
-      footerAccordion.forEach(item => {
-        const accordionWrapper = item.parentNode;
-        item.addEventListener('click', () => {
-          getClass(accordionWrapper);
-        });
-      });
     } else {
       // body.classList.remove('active');
       removeClass(menu);
@@ -63,6 +55,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
   onresize();
+  footerAccordion.forEach(item => {
+    const accordionWrapper = item.parentNode;
+    item.addEventListener('click', () => {
+      getClass(accordionWrapper);
+    });
+  });
+  document.addEventListener('click', openClose);
   window.addEventListener("resize", onresize);
   // window.addEventListener("load", onresize);
 
