@@ -401,6 +401,10 @@ img {
           align-items: center;
 }
 
+.header__item-link .purchases-icon {
+  margin: 0px 0px 1px 0px;
+}
+
 .header__item .box {
   margin: 0px 15px 0px 0px;
 }
@@ -867,6 +871,10 @@ svg {
   color: #37383C;
 }
 
+.nav__dropdown-title:hover {
+  color: #FC4E4D;
+}
+
 .nav__dropdown-link {
   position: relative;
   display: inline-block;
@@ -1120,10 +1128,16 @@ svg {
   position: absolute;
   bottom: 0;
   right: 0;
+  top: 0;
 }
 
 .slider__nav-image img {
   width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: bottom;
+     object-position: bottom;
 }
 
 .slider__btns .swipe-icon {
@@ -1266,11 +1280,16 @@ svg {
           align-items: center;
   font-size: 14px;
   color: #000;
-  padding: 10px 24px;
+  padding: 10px 32px 12px 18px;
 }
 
 .slider-card__btn span {
-  margin: 0px 0px 0px 19px;
+  margin: 2px 0 0 18px;
+  line-height: 1;
+}
+
+.slider-card__btn .purchases-icon {
+  fill: #FC4E4D;
 }
 
 .slider-card__btn:hover {
@@ -1605,6 +1624,16 @@ svg {
   position: absolute;
   right: 71px;
   bottom: 0;
+  top: -45px;
+}
+
+.about-us__image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: bottom;
+     object-position: bottom;
 }
 
 .text-section {
@@ -1660,7 +1689,7 @@ svg {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 37px 0 0px;
+  padding: 37px 0 30px;
   margin: 0 -15px;
 }
 
@@ -1923,6 +1952,19 @@ svg {
     fill: url(#rg);
   }
 
+  .btn-nobg:hover {
+    background-color: #FC4E4D;
+    color: #fff;
+  }
+
+  .btn-nobg:hover .logout-icon {
+    fill: #fff;
+  }
+
+  .btn-nobg:hover .arrow-right {
+    fill: #fff;
+  }
+
   .header__item:hover .box {
     background-color: #fff;
   }
@@ -1947,15 +1989,6 @@ svg {
 
   .user__link:hover .arrow-right {
     fill: #FC4E4D;
-  }
-
-  .btn-logout:hover {
-    background-color: #FC4E4D;
-    color: #fff;
-  }
-
-  .btn-logout:hover .logout-icon {
-    fill: #fff;
   }
 
   .lang:hover .hide {
@@ -2031,7 +2064,7 @@ svg {
   }
 
   .slider-card__btn span {
-    margin: 0px 0px 0px 15px;
+    margin: 2px 0px 0px 15px;
   }
 
   .about-us__inner p {
@@ -2040,10 +2073,6 @@ svg {
 
   .about-us__image {
     right: 0px;
-  }
-
-  .about-us__image img {
-    width: 100%;
   }
 
   .footer__columns-form {
@@ -2497,6 +2526,7 @@ svg {
 
   .footer__columns-title .arrow-down {
     display: inline-block;
+    margin: 0px 0px 1px 0px;
   }
 
   .footer__columns-form {
