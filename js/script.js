@@ -7,8 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const menuClose = document.querySelector('.burger-close');
   const user = document.querySelector('.user .header__item-link');
   const footerAccordion = document.querySelectorAll('.footer__columns-title');
-
-
   const getClass = (item) => {
     if (!item.classList.contains('active')) {
       item.classList.add('active');
@@ -16,11 +14,35 @@ document.addEventListener('DOMContentLoaded', function () {
       item.classList.remove('active');
     }
   };
+  const openClose = (e) => {
 
+    let userParent = user.parentNode;
+    accordionArrow.forEach(arrow => {
+      const arrowParent = arrow.parentNode;
+      if (arrow.contains(e.target)) {
+        arrowParent.classList.toggle('active');
+      }
+    });
+    if (burger.contains(e.target)) {
+      getClass(menu);
+      getClass(body);
+    } else if (!menu.contains(e.target) || menuClose.contains(e.target)) {
+      if (userParent.classList.contains('active')) {
+        removeClass(userParent);
+      }
+      removeClass(menu);
+      removeClass(body);
+
+      accordionArrow.forEach(arrow => {
+        arrow.parentNode.classList.remove('active');
+      });
+    } else if (user.contains(e.target)) {
+      getClass(userParent);
+    }
+  };
   const removeClass = (item) => {
     item.classList.remove('active');
   };
-
   const onresize = () => {
     let width = document.body.clientWidth;
 
@@ -40,53 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
       removeClass(body);
     }
   };
-  // menuClose.addEventListener('click', () => {
-  //   menu.classList.remove('active');
-  // });
-  // accordionArrow.forEach(arrow => {
-  //   const arrowParent = arrow.parentNode;
-  //   arrow.addEventListener('click', () => {
-  //     if (!arrowParent.classList.contains('active')) {
-  //       arrowParent.classList.add('active');
-  //     } else {
-  //       arrowParent.classList.remove('active');
-  //     }
-  //   });
-  // });
-
-  const openClose = (e) => {
-
-
-    let userParent = user.parentNode;
-    accordionArrow.forEach(arrow => {
-      const arrowParent = arrow.parentNode;
-      if (arrow.contains(e.target)) {
-        arrowParent.classList.toggle('active');
-      }
-    });
-
-    if (burger.contains(e.target)) {
-      getClass(menu);
-      getClass(body);
-    } else if (!menu.contains(e.target) || menuClose.contains(e.target)) {
-      if (userParent.classList.contains('active')) {
-        removeClass(userParent);
-      }
-      removeClass(menu);
-      removeClass(body);
-
-      accordionArrow.forEach(arrow => {
-        arrow.parentNode.classList.remove('active');
-      });
-    } else if (user.contains(e.target)) {
-      getClass(userParent);
-    }
-    // else {
-    //   removeClass(userParent);
-    // }
-  };
-
-
   onresize();
   window.addEventListener("resize", onresize);
   // window.addEventListener("load", onresize);
@@ -276,8 +251,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const sliders = document.querySelectorAll('.swiper-container');
 
-  
-  
+
+
   const ourWorksSlider = document.querySelector('.our-works__slider');
   const reviewSlider = document.querySelector('.reviews-swiper');
 
@@ -348,7 +323,7 @@ document.addEventListener('DOMContentLoaded', function () {
         el: el.querySelector('.swiper-pagination'),
         clickable: true,
       },
-      
+
     });
     slidersSwipe.push(mySwiper);
   });
