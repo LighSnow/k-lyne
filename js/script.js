@@ -4,9 +4,18 @@ document.addEventListener('DOMContentLoaded', function () {
   const body = document.querySelector('body');
   const burger = document.querySelector('.burger-btn');
   const menu = document.querySelector('.header__nav-inner');
-  const menuClose = document.querySelector('.burger-close');
+  const menuClose = document.querySelector('.btn-close__burger');
+  const filterClose = document.querySelector('.btn-close__filter');
+  const filterBtn = document.querySelector('.filter-btn');
+  const filter = document.querySelector('.aside');
   const user = document.querySelector('.user .header__item-link');
   const footerAccordion = document.querySelectorAll('.footer__columns-title');
+  let sliderInner = document.querySelector('.slider__inner');
+  let nextBtn = document.querySelector('.swiper-button-next');
+  let prevBtn = document.querySelector('.swiper-button-prev');
+  let sliderContainer = document.querySelector('.swiper-container1');
+
+
   const getClass = (item) => {
     if (!item.classList.contains('active')) {
       item.classList.add('active');
@@ -14,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
       item.classList.remove('active');
     }
   };
+
   const openClose = (e) => {
     footerAccordion.forEach(item => {
       const accordionWrapper = item.parentNode;
@@ -21,10 +31,9 @@ document.addEventListener('DOMContentLoaded', function () {
       //   getClass(accordionWrapper);
       // });
       if (item.contains(e.target)) {
-        getClass(accordionWrapper)
+        getClass(accordionWrapper);
       }
     });
-
     let userParent = user.parentNode;
     accordionArrow.forEach(arrow => {
       const arrowParent = arrow.parentNode;
@@ -32,12 +41,16 @@ document.addEventListener('DOMContentLoaded', function () {
         arrowParent.classList.toggle('active');
       }
     });
-    if (burger.contains(e.target)) {
+    if (filterBtn.contains(e.target)) {
+      getClass(filter);
+    } else if (burger.contains(e.target)) {
       getClass(menu);
       getClass(body);
     } else if (!menu.contains(e.target) || menuClose.contains(e.target)) {
       if (userParent.classList.contains('active')) {
         removeClass(userParent);
+      } else if (!filter.contains(e.target) || filterClose.contains(e.target)) {
+        removeClass(filter);
       }
       removeClass(menu);
       removeClass(body);
@@ -49,9 +62,11 @@ document.addEventListener('DOMContentLoaded', function () {
       getClass(userParent);
     }
   };
+
   const removeClass = (item) => {
     item.classList.remove('active');
   };
+
   const onresize = () => {
     let width = document.body.clientWidth;
 
@@ -65,8 +80,8 @@ document.addEventListener('DOMContentLoaded', function () {
       removeClass(body);
     }
   };
-  onresize();
 
+  onresize();
 
   window.addEventListener("resize", onresize);
   window.addEventListener("load", onresize);
@@ -76,126 +91,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Динамический адаптив
 
-  class DynamicAdapt {
-    // массив объектов
-    elementsArray = [];
+ 
 
-    init() {
-      // массив DOM-элементов
-      this.elements = [...document.querySelectorAll('[data-da]')];
 
-      // наполнение elementsArray объктами
-      this.elements.forEach((element) => {
-        const data = element.dataset.da.trim();
-        if (data !== '') {
-          const dataArray = data.split(',');
-
-          const oElement = {};
-          oElement.element = element;
-          oElement.parent = element.parentNode;
-          oElement.destination = document.querySelector(`.${dataArray[0].trim()}`);
-          oElement.breakpoint = dataArray[1] ? dataArray[1].trim() : '767';
-          oElement.place = dataArray[2] ? dataArray[2].trim() : 'last';
-          oElement.type = dataArray[3] ? dataArray[3].trim() : 'max';
-
-          this.elementsArray.push(oElement);
-        }
-      });
-
-      this.arraySort(this.elementsArray);
-
-      // массив уникальных медиа-запросов
-      this.mediaArray = this.elementsArray
-        .map(({ type, breakpoint }) => `(${type}-width: ${breakpoint}px),${breakpoint}`)
-        .filter((item, index, self) => self.indexOf(item) === index);
-
-      // навешивание слушателя на медиа-запрос
-      // и вызов обработчика при первом запуске
-      this.mediaArray.forEach((item) => {
-        const itemSplit = item.split(',');
-        const media = window.matchMedia(itemSplit[0]);
-        const breakpoint = itemSplit[1];
-        media.addEventListener('change', this.mediaHandler.bind(this, media, breakpoint));
-        this.mediaHandler.call(this, media, breakpoint);
-      });
-    }
-
-    // Основная функция
-    mediaHandler(media, breakpointMeida) {
-      // массив объектов с подходящим брейкпоинтом
-      const elementsFilter = this.elementsArray.filter(
-        ({ breakpoint }) => breakpoint === breakpointMeida,
-      );
-
-      if (media.matches) {
-        elementsFilter.forEach((oElement) => {
-          // получение индекса внутри родителя
-          oElement.index = this.indexInParent(
-            oElement.parent, oElement.element,
-          );
-          this.moveTo(oElement.place, oElement.element, oElement.destination);
-        });
-      } else {
-        elementsFilter.forEach(({ parent, element, index }) => {
-          this.moveBack(parent, element, index);
-        });
-      }
-    }
-
-    // Функция перемещения
-    moveTo(place, element, destination) {
-      if (place === 'last' || place >= destination.children.length) {
-        destination.append(element);
-        return;
-      }
-      if (place === 'first') {
-        destination.prepend(element);
-        return;
-      }
-      destination.children[place].before(element);
-    }
-
-    // Функция возврата
-    moveBack(parent, element, index) {
-      if (parent.children[index] === undefined) {
-        parent.append(element);
-        return;
-      }
-      parent.children[index].before(element);
-    }
-
-    // Функция получения индекса внутри родителя
-    indexInParent(parent, element) {
-      return [...parent.children].indexOf(element);
-    }
-
-    // Функция сортировки массива по breakpoint и place по возрастанию
-    arraySort(arr) {
-      arr.sort((a, b) => {
-        if (a.breakpoint === b.breakpoint) {
-          if (a.place === b.place) {
-            return 0;
-          }
-          if (a.place === 'first' || b.place === 'last') {
-            return -1;
-          }
-          if (a.place === 'last' || b.place === 'first') {
-            return 1;
-          }
-          return a.place - b.place;
-        }
-        return a.breakpoint - b.breakpoint;
-      });
-    }
-  }
-
-  const da = new DynamicAdapt();
-  da.init();
-
-  let sliderInner = document.querySelector('.slider__inner');
-  let nextBtn = document.querySelector('.swiper-button-next');
-  let prevBtn = document.querySelector('.swiper-button-prev');
-  let sliderContainer = document.querySelector('.swiper-container1');
 
   let swiper = new Swiper(sliderContainer, {
     slidesPerView: 'auto',
@@ -279,6 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
       },
     },
   });
+
   const sliders = document.querySelectorAll('.swiper-container');
   // createSwipe(reviewSlider, 2, 30);
   const slidersSwipe = [];
@@ -296,6 +195,46 @@ document.addEventListener('DOMContentLoaded', function () {
     slidersSwipe.push(mySwiper);
   });
   console.log(sliders);
+
+  const catalogSliderWrapper = document.querySelector('.catalog__slider-container');
+
+  let catalogSlider = new Swiper(catalogSliderWrapper, {
+    slidesPerView: 'auto',
+    // spaceBetween: 30,
+    // loop: false,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+  const catalogSliderCard = document.querySelectorAll('.catalog__slider-card');
+  catalogSliderCard.forEach(el => {
+    let catalogCardSlider = new Swiper(el, {
+      slidesPerView: 1,
+      // spaceBetween: 20,
+      autoHeight: true,
+      loop: false,
+      pagination: {
+        el: '.catalog__slider-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: el.querySelector('.catalog__slider-card__btns .swiper-button-next'),
+        prevEl: el.querySelector('.catalog__slider-card__btns .swiper-button-prev'),
+      },
+      breakpoints: {
+        575: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        767: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
+      },
+    });
+  });
+
 
   // 2 of 4 : PHOTOSWIPE #######################################
   // https://photoswipe.com/documentation/getting-started.html //
@@ -503,28 +442,28 @@ document.addEventListener('DOMContentLoaded', function () {
       // photoswipe event: Gallery unbinds events
       // (triggers before closing animation)
 
-      let functionHuy = (currentSlider) => {
-        // This is index of current photoswipe slide
-        let getCurrentIndex = gallery.getCurrentIndex();
-        // Update position of the slider
-        currentSlider.slideTo(getCurrentIndex, true);
-        // 2/2. Start swiper autoplay (on close - if swiper autoplay is true)
-        // currentSlider.autoplay.start();
-      };
+      // let functionHuy = (currentSlider) => {
+      //   // This is index of current photoswipe slide
+      //   let getCurrentIndex = gallery.getCurrentIndex();
+      //   // Update position of the slider
+      //   currentSlider.slideTo(getCurrentIndex, true);
+      //   // 2/2. Start swiper autoplay (on close - if swiper autoplay is true)
+      //   // currentSlider.autoplay.start();
+      // };
 
-      let functionHuy2 = (currentSlider) => {
-        if (currentSlider.autoplay.running) {
-          currentSlider.autoplay.stop();
-        }
-      };
+      // let functionHuy2 = (currentSlider) => {
+      //   if (currentSlider.autoplay.running) {
+      //     currentSlider.autoplay.stop();
+      //   }
+      // };
 
-      gallery.listen("unbindEvents", function () {
-        functionHuy(ourWorks);
-      });
+      // gallery.listen("unbindEvents", function () {
+      //   functionHuy(ourWorks);
+      // });
 
-      gallery.listen('initialZoomIn', function () {
-        functionHuy2(ourWorks);
-      });
+      // gallery.listen('initialZoomIn', function () {
+      //   functionHuy2(ourWorks);
+      // });
 
 
 
@@ -552,3 +491,119 @@ document.addEventListener('DOMContentLoaded', function () {
   initPhotoSwipeFromDOM(".my-gallery");
 
 });
+
+class DynamicAdapt {
+  // массив объектов
+  elementsArray = [];
+
+  init() {
+    // массив DOM-элементов
+    this.elements = [...document.querySelectorAll('[data-da]')];
+
+    // наполнение elementsArray объктами
+    this.elements.forEach((element) => {
+      const data = element.dataset.da.trim();
+      if (data !== '') {
+        const dataArray = data.split(',');
+
+        const oElement = {};
+        oElement.element = element;
+        oElement.parent = element.parentNode;
+        oElement.destination = document.querySelector(`.${dataArray[0].trim()}`);
+        oElement.breakpoint = dataArray[1] ? dataArray[1].trim() : '767';
+        oElement.place = dataArray[2] ? dataArray[2].trim() : 'last';
+        oElement.type = dataArray[3] ? dataArray[3].trim() : 'max';
+
+        this.elementsArray.push(oElement);
+      }
+    });
+
+    this.arraySort(this.elementsArray);
+
+    // массив уникальных медиа-запросов
+    this.mediaArray = this.elementsArray
+      .map(({ type, breakpoint }) => `(${type}-width: ${breakpoint}px),${breakpoint}`)
+      .filter((item, index, self) => self.indexOf(item) === index);
+
+    // навешивание слушателя на медиа-запрос
+    // и вызов обработчика при первом запуске
+    this.mediaArray.forEach((item) => {
+      const itemSplit = item.split(',');
+      const media = window.matchMedia(itemSplit[0]);
+      const breakpoint = itemSplit[1];
+      media.addEventListener('change', this.mediaHandler.bind(this, media, breakpoint));
+      this.mediaHandler.call(this, media, breakpoint);
+    });
+  }
+
+  // Основная функция
+  mediaHandler(media, breakpointMeida) {
+    // массив объектов с подходящим брейкпоинтом
+    const elementsFilter = this.elementsArray.filter(
+      ({ breakpoint }) => breakpoint === breakpointMeida,
+    );
+
+    if (media.matches) {
+      elementsFilter.forEach((oElement) => {
+        // получение индекса внутри родителя
+        oElement.index = this.indexInParent(
+          oElement.parent, oElement.element,
+        );
+        this.moveTo(oElement.place, oElement.element, oElement.destination);
+      });
+    } else {
+      elementsFilter.forEach(({ parent, element, index }) => {
+        this.moveBack(parent, element, index);
+      });
+    }
+  }
+
+  // Функция перемещения
+  moveTo(place, element, destination) {
+    if (place === 'last' || place >= destination.children.length) {
+      destination.append(element);
+      return;
+    }
+    if (place === 'first') {
+      destination.prepend(element);
+      return;
+    }
+    destination.children[place].before(element);
+  }
+
+  // Функция возврата
+  moveBack(parent, element, index) {
+    if (parent.children[index] === undefined) {
+      parent.append(element);
+      return;
+    }
+    parent.children[index].before(element);
+  }
+
+  // Функция получения индекса внутри родителя
+  indexInParent(parent, element) {
+    return [...parent.children].indexOf(element);
+  }
+
+  // Функция сортировки массива по breakpoint и place по возрастанию
+  arraySort(arr) {
+    arr.sort((a, b) => {
+      if (a.breakpoint === b.breakpoint) {
+        if (a.place === b.place) {
+          return 0;
+        }
+        if (a.place === 'first' || b.place === 'last') {
+          return -1;
+        }
+        if (a.place === 'last' || b.place === 'first') {
+          return 1;
+        }
+        return a.place - b.place;
+      }
+      return a.breakpoint - b.breakpoint;
+    });
+  }
+}
+
+const da = new DynamicAdapt();
+da.init();
