@@ -10,9 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const filter = document.querySelector('.aside');
   const user = document.querySelector('.user .header__item-link');
   const footerAccordion = document.querySelectorAll('.footer__columns-title');
-  let sliderInner = document.querySelector('.slider__inner');
-  let nextBtn = document.querySelector('.swiper-button-next');
-  let prevBtn = document.querySelector('.swiper-button-prev');
+  let nextBtn = document.querySelector('.slider__nav-next');
+  let prevBtn = document.querySelector('.slider__nav-prev');
   let sliderContainer = document.querySelector('.swiper-container1');
 
 
@@ -41,15 +40,21 @@ document.addEventListener('DOMContentLoaded', function () {
         arrowParent.classList.toggle('active');
       }
     });
-    if (filterBtn.contains(e.target)) {
-      getClass(filter);
-    } else if (burger.contains(e.target)) {
+    if (document.querySelector('.catalog__inner').childNodes[3]) {
+      if (filterBtn.contains(e.target)) {
+        getClass(filter);
+      }
+    }
+
+
+    if (burger.contains(e.target)) {
       getClass(menu);
       getClass(body);
     } else if (!menu.contains(e.target) || menuClose.contains(e.target)) {
       if (userParent.classList.contains('active')) {
         removeClass(userParent);
-      } else if (!filter.contains(e.target) || filterClose.contains(e.target)) {
+      }
+      else if (body.childNodes.filterBtn && !filter.contains(e.target) || body.childNodes.filterBtn && filterClose.contains(e.target)) {
         removeClass(filter);
       }
       removeClass(menu);
@@ -62,6 +67,8 @@ document.addEventListener('DOMContentLoaded', function () {
       getClass(userParent);
     }
   };
+
+
 
   const removeClass = (item) => {
     item.classList.remove('active');
@@ -88,12 +95,21 @@ document.addEventListener('DOMContentLoaded', function () {
   // window.addEventListener("load", onresize);
 
 
+  let mainSwiper = new Swiper('.main-swiper', {
+    slidesPerView: 'auto',
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+      type: 'fraction',
+    },
+  });
+
 
   // Динамический адаптив
-
- 
-
-
 
   let swiper = new Swiper(sliderContainer, {
     slidesPerView: 'auto',
@@ -178,23 +194,66 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
-  const sliders = document.querySelectorAll('.swiper-container');
-  // createSwipe(reviewSlider, 2, 30);
-  const slidersSwipe = [];
-  sliders.forEach(el => {
-    let mySwiper = new Swiper(el, {
-      slidesPerView: 'auto',
-      // spaceBetween: 30,
-      loop: true,
-      pagination: {
-        el: el.querySelector('.swiper-pagination'),
-        clickable: true,
-      },
 
-    });
-    slidersSwipe.push(mySwiper);
+  let asideItem = document.querySelectorAll('.aside__filter-item');
+  asideItem.forEach(elem => {
+    if (elem.classList.contains('aside__filter-slider')) {
+      let nonLinearSlider = document.querySelector('.range-slider');
+      noUiSlider.create(nonLinearSlider, {
+        connect: true,
+        behaviour: 'tap',
+        start: [198, 1249],
+        animationDuration: 300,
+        step: 1,
+        range: {
+          'min': [0],
+          'max': [1529]
+        }
+      });
+      let nodes = [
+        document.getElementById('lower-value'), // 0
+        document.getElementById('upper-value')  // 1
+      ];
+      nonLinearSlider.noUiSlider.on('update', function (values, handle, unencoded, isTap, positions) {
+        nodes[handle].innerHTML = `$${Math.floor(values[handle])}`;
+      });
+    }
   });
-  console.log(sliders);
+
+  const selectFunction = () => {
+    const customSelect = document.querySelectorAll('.custom-select');
+    customSelect.forEach(elem => {
+      const choices = new Choices(elem, {
+        searchEnabled: false,
+        itemSelectText: '',
+      });
+    });
+  };
+
+  selectFunction();
+
+
+
+
+
+
+  // const sliders = document.querySelectorAll('.swiper-container');
+  // // createSwipe(reviewSlider, 2, 30);
+  // const slidersSwipe = [];
+  // sliders.forEach(el => {
+  //   let mySwiper = new Swiper(el, {
+  //     slidesPerView: 'auto',
+  //     // spaceBetween: 30,
+  //     loop: true,
+  //     pagination: {
+  //       el: el.querySelector('.swiper-pagination'),
+  //       clickable: true,
+  //     },
+
+  //   });
+  //   slidersSwipe.push(mySwiper);
+  // });
+  // console.log(sliders);
 
   const catalogSliderWrapper = document.querySelector('.catalog__slider-container');
 
@@ -436,38 +495,20 @@ document.addEventListener('DOMContentLoaded', function () {
       gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
       gallery.init();
 
-      /* ########### PART 4 - EXTRA CODE  ########### */
-      /* EXTRA CODE (NOT FROM photoswipe CORE) - 
-      1/2. UPDATE SWIPER POSITION TO THE CURRENT ZOOM_IN IMAGE (BETTER UI) */
-      // photoswipe event: Gallery unbinds events
-      // (triggers before closing animation)
-
-      // let functionHuy = (currentSlider) => {
-      //   // This is index of current photoswipe slide
-      //   let getCurrentIndex = gallery.getCurrentIndex();
-      //   // Update position of the slider
-      //   currentSlider.slideTo(getCurrentIndex, true);
-      //   // 2/2. Start swiper autoplay (on close - if swiper autoplay is true)
-      //   // currentSlider.autoplay.start();
-      // };
-
-      // let functionHuy2 = (currentSlider) => {
-      //   if (currentSlider.autoplay.running) {
-      //     currentSlider.autoplay.stop();
-      //   }
-      // };
-
-      // gallery.listen("unbindEvents", function () {
-      //   functionHuy(ourWorks);
-      // });
-
-      // gallery.listen('initialZoomIn', function () {
-      //   functionHuy2(ourWorks);
-      // });
-
-
-
-
+      gallery.listen("unbindEvents", function () {
+        // This is index of current photoswipe slide
+        var getCurrentIndex = gallery.getCurrentIndex();
+        // Update position of the slider
+        ourWorks.slideTo(getCurrentIndex, false);
+        // 2/2. Start swiper autoplay (on close - if swiper autoplay is true)
+        ourWorks.autoplay.start();
+      });
+      // 2/2. Extra Code (Not from photo) - swiper autoplay stop when image zoom */
+      gallery.listen('initialZoomIn', function () {
+        if (ourWorks.autoplay.running) {
+          ourWorks.autoplay.stop();
+        }
+      });
       // 2/2. Extra Code (Not from photo) - swiper autoplay stop when image zoom */
 
     };
@@ -607,3 +648,5 @@ class DynamicAdapt {
 
 const da = new DynamicAdapt();
 da.init();
+
+
