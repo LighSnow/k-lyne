@@ -40,21 +40,16 @@ document.addEventListener('DOMContentLoaded', function () {
         arrowParent.classList.toggle('active');
       }
     });
-    if (document.querySelector('.catalog__inner').childNodes[3]) {
-      if (filterBtn.contains(e.target)) {
-        getClass(filter);
-      }
-    }
-
-
-    if (burger.contains(e.target)) {
+    if (filterBtn.contains(e.target)) {
+      getClass(filter);
+    } else if (burger.contains(e.target)) {
       getClass(menu);
       getClass(body);
     } else if (!menu.contains(e.target) || menuClose.contains(e.target)) {
       if (userParent.classList.contains('active')) {
         removeClass(userParent);
       }
-      else if (body.childNodes.filterBtn && !filter.contains(e.target) || body.childNodes.filterBtn && filterClose.contains(e.target)) {
+      else if (!filter.contains(e.target) || filterClose.contains(e.target)) {
         removeClass(filter);
       }
       removeClass(menu);

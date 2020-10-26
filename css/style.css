@@ -1178,10 +1178,6 @@ svg {
   transition: transform 0.2s ease, -webkit-transform 0.2s ease;
 }
 
-.nav__list > li:not(:last-child) {
-  margin: 0px 29px 0px 0px;
-}
-
 .nav__list .arrow-down,
 .nav__list .arrow-right {
   display: none;
@@ -1204,7 +1200,7 @@ svg {
   text-align: center;
   color: #000;
   text-transform: uppercase;
-  padding: 23px 20px;
+  padding: 23px 33px;
 }
 
 .nav__link svg {
@@ -2932,12 +2928,8 @@ svg {
     max-width: 1190px;
   }
 
-  .nav__list > li:not(:last-child) {
-    margin: 0px 21px 0px 0px;
-  }
-
   .nav__link {
-    padding: 23px 15px;
+    padding: 23px 24px;
   }
 
   .nav__link::before {
@@ -3037,12 +3029,8 @@ svg {
             justify-content: center;
   }
 
-  .nav__list > li:not(:last-child) {
-    margin: 0px 13px 0px 0px;
-  }
-
   .nav__link {
-    padding: 23px 10px;
+    padding: 23px 16px;
   }
 
   .nav__dropdown {
@@ -3153,8 +3141,8 @@ svg {
     max-width: 920px;
   }
 
-  .nav__list > li:not(:last-child) {
-    margin: 0;
+  .nav__link {
+    padding: 23px 10px;
   }
 
   .reviews__text {
