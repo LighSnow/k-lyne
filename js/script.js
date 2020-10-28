@@ -1,19 +1,18 @@
 
 document.addEventListener('DOMContentLoaded', function () {
+
+
+
   const accordionArrow = document.querySelectorAll('.nav__link-arrow');
   const body = document.querySelector('body');
   const burger = document.querySelector('.burger-btn');
   const menu = document.querySelector('.header__nav-inner');
   const menuClose = document.querySelector('.btn-close__burger');
-  const filterClose = document.querySelector('.btn-close__filter');
-  const filterBtn = document.querySelector('.filter-btn');
-  const filter = document.querySelector('.aside');
-  const user = document.querySelector('.user .header__item-link');
+  const user = document.querySelector('.user .user-burger');
   const footerAccordion = document.querySelectorAll('.footer__columns-title');
   let nextBtn = document.querySelector('.slider__nav-next');
   let prevBtn = document.querySelector('.slider__nav-prev');
   let sliderContainer = document.querySelector('.swiper-container1');
-
 
   const getClass = (item) => {
     if (!item.classList.contains('active')) {
@@ -34,23 +33,19 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
     let userParent = user.parentNode;
+    console.log(user.parentNode);
     accordionArrow.forEach(arrow => {
       const arrowParent = arrow.parentNode;
       if (arrow.contains(e.target)) {
         arrowParent.classList.toggle('active');
       }
     });
-    if (filterBtn.contains(e.target)) {
-      getClass(filter);
-    } else if (burger.contains(e.target)) {
+    if (burger.contains(e.target)) {
       getClass(menu);
       getClass(body);
     } else if (!menu.contains(e.target) || menuClose.contains(e.target)) {
       if (userParent.classList.contains('active')) {
         removeClass(userParent);
-      }
-      else if (!filter.contains(e.target) || filterClose.contains(e.target)) {
-        removeClass(filter);
       }
       removeClass(menu);
       removeClass(body);
@@ -87,7 +82,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
   window.addEventListener("resize", onresize);
   window.addEventListener("load", onresize);
+  window.addEventListener('scroll', () => {
+    const stickyHeader = document.querySelector('.sticky-header');
+    let width = document.body.clientWidth;
+
+    if (window.pageYOffset > 196 && width > 916) {
+      stickyHeader.classList.add('sticky');
+    } else {
+      stickyHeader.classList.remove('sticky');
+    }
+  });
   // window.addEventListener("load", onresize);
+
+
+
+
+
+
+
 
 
   let mainSwiper = new Swiper('.main-swiper', {
@@ -227,7 +239,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
   selectFunction();
 
-
+  const galleryThumbs = new Swiper('.product-cart__slider-thumbs', {
+    spaceBetween: 10,
+    slidesPerView: 3,
+    loop: false,
+    freeMode: true,
+    direction: 'horizontal',
+    loopedSlides: 4,
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      800: {
+        slidesPerView: 4,
+        spaceBetween: 20,
+      },
+      1205: {
+        slidesPerView: 4,
+        spaceBetween: 20,
+        direction: 'vertical',
+      },
+    },
+  });
+  const galleryTop = new Swiper('.product-cart__slider-top', {
+    spaceBetween: 10,
+    loop: true,
+    loopedSlides: 4,
+    thumbs: {
+      swiper: galleryThumbs,
+    },
+  });
 
 
 
@@ -293,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // 2 of 4 : PHOTOSWIPE #######################################
   // https://photoswipe.com/documentation/getting-started.html //
 
-  let initPhotoSwipeFromDOM = function (gallerySelector) {
+  let initPhotoSwipeFromDOM = function (gallerySelector, slider) {
     // parse slide data (url, title, size ...) from DOM elements
     // (children of gallerySelector)
     let parseThumbnailElements = function (el) {
@@ -355,7 +399,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // find root element of slide
       let clickedListItem = closest(eTarget, function (el) {
-        return el.tagName && el.tagName.toUpperCase() === "DIV";
+        return el.tagName && el.tagName.toUpperCase() === "FIGURE";
       });
 
       if (!clickedListItem) {
@@ -492,18 +536,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
       gallery.listen("unbindEvents", function () {
         // This is index of current photoswipe slide
-        var getCurrentIndex = gallery.getCurrentIndex();
+        let getCurrentIndex = gallery.getCurrentIndex();
         // Update position of the slider
-        ourWorks.slideTo(getCurrentIndex, false);
+        if(slider) {
+          slider.slideTo(getCurrentIndex, false);
+        }
+        
         // 2/2. Start swiper autoplay (on close - if swiper autoplay is true)
-        ourWorks.autoplay.start();
+        // slider.autoplay.start();
       });
       // 2/2. Extra Code (Not from photo) - swiper autoplay stop when image zoom */
-      gallery.listen('initialZoomIn', function () {
-        if (ourWorks.autoplay.running) {
-          ourWorks.autoplay.stop();
-        }
-      });
+      // gallery.listen('initialZoomIn', function () {
+      //   if (slider.autoplay.running) {
+      //     // slider.autoplay.stop();
+      //   }
+      // });
       // 2/2. Extra Code (Not from photo) - swiper autoplay stop when image zoom */
 
     };
@@ -524,124 +571,227 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   // execute above function
-  initPhotoSwipeFromDOM(".my-gallery");
+
+  initPhotoSwipeFromDOM(".my-gallery", galleryTop);
+  initPhotoSwipeFromDOM(".ourWorks-gallery");
+
 
 });
 
-class DynamicAdapt {
-  // массив объектов
-  elementsArray = [];
+// class DynamicAdapt {
+//   // массив объектов
+//   elementsArray = [];
+
+//   init() {
+//     // массив DOM-элементов
+//     this.elements = [...document.querySelectorAll('[data-da]')];
+
+//     // наполнение elementsArray объктами
+//     this.elements.forEach((element) => {
+//       const data = element.dataset.da.trim();
+//       if (data !== '') {
+//         const dataArray = data.split(',');
+
+//         const oElement = {};
+//         oElement.element = element;
+//         oElement.parent = element.parentNode;
+//         oElement.destination = document.querySelector(`.${dataArray[0].trim()}`);
+//         oElement.breakpoint = dataArray[1] ? dataArray[1].trim() : '767';
+//         oElement.place = dataArray[2] ? dataArray[2].trim() : 'last';
+//         oElement.type = dataArray[3] ? dataArray[3].trim() : 'max';
+
+//         this.elementsArray.push(oElement);
+//       }
+//     });
+
+//     this.arraySort(this.elementsArray);
+
+//     // массив уникальных медиа-запросов
+//     this.mediaArray = this.elementsArray
+//       .map(({ type, breakpoint }) => `(${type}-width: ${breakpoint}px),${breakpoint}`)
+//       .filter((item, index, self) => self.indexOf(item) === index);
+
+//     // навешивание слушателя на медиа-запрос
+//     // и вызов обработчика при первом запуске
+//     this.mediaArray.forEach((item) => {
+//       const itemSplit = item.split(',');
+//       const media = window.matchMedia(itemSplit[0]);
+//       const breakpoint = itemSplit[1];
+//       media.addEventListener('change', this.mediaHandler.bind(this, media, breakpoint));
+//       this.mediaHandler.call(this, media, breakpoint);
+//     });
+//   }
+
+//   // Основная функция
+//   mediaHandler(media, breakpointMeida) {
+//     // массив объектов с подходящим брейкпоинтом
+//     const elementsFilter = this.elementsArray.filter(
+//       ({ breakpoint }) => breakpoint === breakpointMeida,
+//     );
+
+//     if (media.matches) {
+//       elementsFilter.forEach((oElement) => {
+//         // получение индекса внутри родителя
+//         oElement.index = this.indexInParent(
+//           oElement.parent, oElement.element,
+//         );
+//         this.moveTo(oElement.place, oElement.element, oElement.destination);
+//       });
+//     } else {
+//       elementsFilter.forEach(({ parent, element, index }) => {
+//         this.moveBack(parent, element, index);
+//       });
+//     }
+//   }
+
+//   // Функция перемещения
+//   moveTo(place, element, destination) {
+//     if (place === 'last' || place >= destination.children.length) {
+//       destination.append(element);
+//       return;
+//     }
+//     if (place === 'first') {
+//       destination.prepend(element);
+//       return;
+//     }
+//     destination.children[place].before(element);
+//   }
+
+//   // Функция возврата
+//   moveBack(parent, element, index) {
+//     if (parent.children[index] === undefined) {
+//       parent.append(element);
+//       return;
+//     }
+//     parent.children[index].before(element);
+//   }
+
+//   // Функция получения индекса внутри родителя
+//   indexInParent(parent, element) {
+//     return [...parent.children].indexOf(element);
+//   }
+
+//   // Функция сортировки массива по breakpoint и place по возрастанию
+//   arraySort(arr) {
+//     arr.sort((a, b) => {
+//       if (a.breakpoint === b.breakpoint) {
+//         if (a.place === b.place) {
+//           return 0;
+//         }
+//         if (a.place === 'first' || b.place === 'last') {
+//           return -1;
+//         }
+//         if (a.place === 'last' || b.place === 'first') {
+//           return 1;
+//         }
+//         return a.place - b.place;
+//       }
+//       return a.breakpoint - b.breakpoint;
+//     });
+//   }
+// }
+
+// const da = new DynamicAdapt();
+// da.init();
+
+
+/**
+ * @param {string} hash_trigger Hash string, that will be used to trigger open and close menu
+ * @param {string} open_class Optional style class name when menu is opened, default 'menu-opened'
+ * @param {string} close_class  Optional style class name when menu is closed, default menu-closed
+  */
+
+
+class MenuOpenClose {
+
+  constructor(hash_trigger = 'open-menu', open_class = 'menu-opened', close_class = 'menu-closed') {
+    this.hash_trigger = hash_trigger;
+    this.open_class = open_class;
+    this.close_class = close_class;
+    this.open = false;
+    this.init();
+  }
+
+  get openMenu() {
+    const body_classList = document.body.classList;
+    body_classList.add(this.open_class);
+    body_classList.remove(this.close_class);
+    this.open = true;
+
+    return true;
+  }
+
+  get closeMenu() {
+    const body_classList = document.body.classList;
+    body_classList.add(this.close_class);
+    body_classList.remove(this.open_class);
+    this.open = false;
+
+    return false;
+  }
+
+
+  get toggle() {
+    if (location.hash.includes(this.hash_trigger)) {
+      this.closeMenu;
+      location.hash = '';
+    }
+    else {
+      this.openMenu;
+      location.hash = this.hash_trigger;
+    }
+  }
+
+  hashTrigger(event) {
+
+    if (event) event.preventDefault();
+
+    if (location.hash.includes(this.hash_trigger))
+      this.openMenu;
+    else
+      this.closeMenu;
+  }
 
   init() {
-    // массив DOM-элементов
-    this.elements = [...document.querySelectorAll('[data-da]')];
-
-    // наполнение elementsArray объктами
-    this.elements.forEach((element) => {
-      const data = element.dataset.da.trim();
-      if (data !== '') {
-        const dataArray = data.split(',');
-
-        const oElement = {};
-        oElement.element = element;
-        oElement.parent = element.parentNode;
-        oElement.destination = document.querySelector(`.${dataArray[0].trim()}`);
-        oElement.breakpoint = dataArray[1] ? dataArray[1].trim() : '767';
-        oElement.place = dataArray[2] ? dataArray[2].trim() : 'last';
-        oElement.type = dataArray[3] ? dataArray[3].trim() : 'max';
-
-        this.elementsArray.push(oElement);
-      }
-    });
-
-    this.arraySort(this.elementsArray);
-
-    // массив уникальных медиа-запросов
-    this.mediaArray = this.elementsArray
-      .map(({ type, breakpoint }) => `(${type}-width: ${breakpoint}px),${breakpoint}`)
-      .filter((item, index, self) => self.indexOf(item) === index);
-
-    // навешивание слушателя на медиа-запрос
-    // и вызов обработчика при первом запуске
-    this.mediaArray.forEach((item) => {
-      const itemSplit = item.split(',');
-      const media = window.matchMedia(itemSplit[0]);
-      const breakpoint = itemSplit[1];
-      media.addEventListener('change', this.mediaHandler.bind(this, media, breakpoint));
-      this.mediaHandler.call(this, media, breakpoint);
-    });
-  }
-
-  // Основная функция
-  mediaHandler(media, breakpointMeida) {
-    // массив объектов с подходящим брейкпоинтом
-    const elementsFilter = this.elementsArray.filter(
-      ({ breakpoint }) => breakpoint === breakpointMeida,
-    );
-
-    if (media.matches) {
-      elementsFilter.forEach((oElement) => {
-        // получение индекса внутри родителя
-        oElement.index = this.indexInParent(
-          oElement.parent, oElement.element,
-        );
-        this.moveTo(oElement.place, oElement.element, oElement.destination);
-      });
-    } else {
-      elementsFilter.forEach(({ parent, element, index }) => {
-        this.moveBack(parent, element, index);
-      });
-    }
-  }
-
-  // Функция перемещения
-  moveTo(place, element, destination) {
-    if (place === 'last' || place >= destination.children.length) {
-      destination.append(element);
-      return;
-    }
-    if (place === 'first') {
-      destination.prepend(element);
-      return;
-    }
-    destination.children[place].before(element);
-  }
-
-  // Функция возврата
-  moveBack(parent, element, index) {
-    if (parent.children[index] === undefined) {
-      parent.append(element);
-      return;
-    }
-    parent.children[index].before(element);
-  }
-
-  // Функция получения индекса внутри родителя
-  indexInParent(parent, element) {
-    return [...parent.children].indexOf(element);
-  }
-
-  // Функция сортировки массива по breakpoint и place по возрастанию
-  arraySort(arr) {
-    arr.sort((a, b) => {
-      if (a.breakpoint === b.breakpoint) {
-        if (a.place === b.place) {
-          return 0;
-        }
-        if (a.place === 'first' || b.place === 'last') {
-          return -1;
-        }
-        if (a.place === 'last' || b.place === 'first') {
-          return 1;
-        }
-        return a.place - b.place;
-      }
-      return a.breakpoint - b.breakpoint;
-    });
+    window.addEventListener("hashchange", event => this.hashTrigger(event));
+    // window.addEventListener("scroll", event => this.closeMenu);
+    this.hashTrigger();
   }
 }
 
-const da = new DynamicAdapt();
-da.init();
+const counterBtn = document.querySelectorAll('.counter__btn');
+
+counterBtn.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    let input = btn.parentElement.querySelector('.counter__input');
+    // const plus = document.querySelector('.counter__btn-plus');
+
+    // if (plus.contains(e.target)) {
+    //   input.value++;
+    // }
+    // else if(input.value <= 1){
+    //   input.value = 1;
+    // }
+    // else {
+    //   input.value--;
+    // }
+    const plusMinus = btn.classList.contains('counter__btn-plus') ?
+      'plus' :
+      'minus';
+
+    switch (plusMinus) {
+      case "plus":
+        input.value++;
+        break;
+      case "minus":
+        if (input.value > 1)
+          input.value--;
+        break;
+    }
+  });
+});
+
+
+
 
 

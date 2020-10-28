@@ -28,6 +28,7 @@
 
 	<!-- <link rel="stylesheet" href="./css/default-skin.css"> -->
 	<link rel="stylesheet" href="./css/style.min.css">
+	
 	<title>K-LYNE</title>
 </head>
 
@@ -161,8 +162,7 @@
   </radialGradient>
 </svg>
   <div class="wrapper">
-    <div class="content">
-      <header class="header">
+    <header class="header">
   <div class="container">
     <div class="header__inner">
       <div class="header__top">
@@ -171,7 +171,7 @@
             <use xlink:href="#burger"></use>
           </svg>
         </div>
-        <div class="header__left" data-da="header__nav-inner,916,first">
+        <div class="header__left">
           <div class="header__language lang">
             <div class="lang__item active">
               <img src="./img/lang/eng.png" srcset="./img/lang/eng@2x.png" alt="" />
@@ -207,7 +207,7 @@
           <img src="./icons/logo.svg" alt="" />
         </a>
         <div class="header__right">
-          <div class="user header__item" data-da="header__nav-inner,916,1">
+          <div class="user header__item">
             <a class="header__item-link" href="#">
               <span class=" box">
                 <svg class="header__item-icon icon user-icon">
@@ -307,6 +307,77 @@
   <nav class="header__nav nav">
     <div class="container">
       <div class="header__nav-inner">
+        <div class="header__left">
+          <div class="header__language lang">
+            <div class="lang__item active">
+              <img src="./img/lang/eng.png" srcset="./img/lang/eng@2x.png" alt="" />
+              <span>ENG</span>
+              <svg class="arrow-down">
+                <use xlink:href="#arrow-down"></use>
+              </svg>
+            </div>
+            <div class="lang__item hide">
+              <img src="./img/lang/fr.png" srcset="./img/lang/fr@2x.png" alt="" />
+              <span>FR</span>
+            </div>
+          </div>
+          <div class="header__social social">
+            <a class="social__link box" href="#">
+              <svg class="facebook-icon icon">
+                <use xlink:href="#facebook"></use>
+              </svg>
+            </a>
+            <a class="social__link box" href="#">
+              <svg class="youtube-icon icon">
+                <use xlink:href="#youtube"></use>
+              </svg>
+            </a>
+            <a class="social__link box" href="#">
+              <svg class="instagram-icon icon">
+                <use xlink:href="#instagram"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="user header__item">
+          <a class="header__item-link user-burger" href="#">
+            <span class=" box">
+              <svg class="header__item-icon icon user-icon">
+                <use xlink:href="#user"></use>
+              </svg>
+            </span>
+            <div class="user__body header__item-body">
+              <h3 class="header__item-title">hello</h3>
+              <span class="header__item-subtitle">John Doe
+                <svg class="arrow-down">
+                  <use xlink:href="#arrow-down"></use>
+                </svg>
+              </span>
+            </div>
+          </a>
+          <div class="user__dropdown header__item-dropdown">
+            <div class="header__item-wrapper">
+              <a href="#" class="user__link">
+                <svg class="arrow-right">
+                  <use xlink:href="#arrow-right"></use>
+                </svg>
+                <span>My Profile</span>
+              </a>
+              <a href="#" class="user__link">
+                <svg class="arrow-right">
+                  <use xlink:href="#arrow-right"></use>
+                </svg>
+                <span>Order History</span>
+              </a>
+              <a class="btn btn-nobg btn-logout " href="#">
+                <span>Logout</span>
+                <svg class="logout-icon">
+                  <use xlink:href="#logout"></use>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
         <div class="btn-close btn-close__burger box">
           <svg class="btn-close__btn">
             <use xlink:href="#close-icon"></use>
@@ -886,7 +957,158 @@
     </div>
   </nav>
 </header>
+    <div class="sticky-header">
+  <div class="container">
+    <div class="sticky-header__inner">
+      <a class="sticky-header__logo" href="#">
+        <img src="./icons/logo-mini.svg" alt="" />
+      </a>
+      <div class="sticky-header__nav">
+        <ul class="nav__list">
+          <li>
+            <a class="nav__link" href="#">
+              <svg class="arrow-right">
+                <use xlink:href="#arrow-right"></use>
+              </svg>
+              HOME
+            </a>
+          </li>
+          <li>
+            <a class="nav__link " href="#">
+              <svg class="arrow-right">
+                <use xlink:href="#arrow-right"></use>
+              </svg>
+              WIGS
+            </a>
+            <span class="nav__link-arrow">
+              <svg class="arrow-down">
+                <use xlink:href="#arrow-down"></use>
+              </svg>
+            </span>
+          </li>
+          <li>
+            <a class="nav__link" href="#">
+              <svg class="arrow-right">
+                <use xlink:href="#arrow-right"></use>
+              </svg>
+              LACE FRONT WIGS
+            </a>
+            <span class="nav__link-arrow">
+              <svg class="arrow-down">
+                <use xlink:href="#arrow-down"></use>
+              </svg>
+            </span>
+          </li>
+          <li>
+            <a class="nav__link" href="#">
+              <svg class="arrow-right">
+                <use xlink:href="#arrow-right"></use>
+              </svg>
+              VIRGIN HAIR
+            </a>
+            <span class="nav__link-arrow">
+              <svg class="arrow-down">
+                <use xlink:href="#arrow-down"></use>
+              </svg>
+            </span>
+          </li>
+          <li>
+            <a class="nav__link" href="#">
+              <svg class="arrow-right">
+                <use xlink:href="#arrow-right"></use>
+              </svg>
+              BRAID WIGS
+            </a>
+            <span class="nav__link-arrow">
+              <svg class="arrow-down">
+                <use xlink:href="#arrow-down"></use>
+              </svg>
+            </span>
+          </li>
+          <li>
+            <a class="nav__link" href="#">
+              <svg class="arrow-right">
+                <use xlink:href="#arrow-right"></use>
+              </svg>
+              BRAIDING HAIR
+            </a>
+            <span class="nav__link-arrow">
+              <svg class="arrow-down">
+                <use xlink:href="#arrow-down"></use>
+              </svg>
+            </span>
+          </li>
+          <li>
+            <a class="nav__link" href="#">
+              <svg class="arrow-right">
+                <use xlink:href="#arrow-right"></use>
+              </svg>
+              HAIR PIECES
+            </a>
+            <span class="nav__link-arrow">
+              <svg class="arrow-down">
+                <use xlink:href="#arrow-down"></use>
+              </svg>
+            </span>
+          </li>
+          <li>
+            <a class="nav__link" href="#">
+              <svg class="arrow-right">
+                <use xlink:href="#arrow-right"></use>
+              </svg>
+              HAIR CARE
+            </a>
+            <span class="nav__link-arrow">
+              <svg class="arrow-down">
+                <use xlink:href="#arrow-down"></use>
+              </svg>
+            </span>
+          </li>
+          <li>
+            <a class="nav__link" href="#">
+              <svg class="arrow-right">
+                <use xlink:href="#arrow-right"></use>
+              </svg>
+              BEAUTY
+            </a>
+            <span class="nav__link-arrow">
+              <svg class="arrow-down">
+                <use xlink:href="#arrow-down"></use>
+              </svg>
+            </span>
+          </li>
+          <li>
+            <a class="nav__link" href="#">
+              <svg class="arrow-right">
+                <use xlink:href="#arrow-right"></use>
+              </svg>
+              CONTACT US
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="sticky-header__icon">
+        <a class="header__item-link" href="#">
+          <span class=" box">
+            <svg class="header__item-icon icon user-icon">
+              <use xlink:href="#user"></use>
+            </svg>
+          </span>
+        </a>
+        <a class="header__item-link" href="#">
+          <span class=" box">
+            <svg class="header__item-icon icon purchases-icon">
+              <use xlink:href="#purchases"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="content">
       <section class="section catalog">
+        <div class="overlay" onclick="menu.closeMenu"></div>
         <div class="container">
           <ul class="breadcrumb">
   <li class="breadcrumb__list">
@@ -899,7 +1121,7 @@
 </ul>
           <div class="catalog__inner">
             <div class="catalog__aside aside">
-              <div class="btn-close btn-close__filter box">
+              <div class="btn-close btn-close__filter box" onclick="menu.closeMenu">
                 <svg class="btn-close__btn">
                   <use xlink:href="#close-icon"></use>
                 </svg>
@@ -928,7 +1150,7 @@
                 </ul>
               </div>
             </div>
-            <div class="catalog__filter filter-btn box">
+            <div class="catalog__filter filter-btn box" onclick="menu.openMenu">
               <svg class="filter">
                 <use xlink:href="#filter"></use>
               </svg>
@@ -2204,6 +2426,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
 <script src="./js/script.js"></script>
+
+<script>
+ const menu = new MenuOpenClose();
+</script>
 </body>
 
 </html>
