@@ -265,6 +265,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
   const galleryTop = new Swiper('.product-cart__slider-top', {
+
     spaceBetween: 10,
     loop: true,
     loopedSlides: 4,
@@ -273,26 +274,78 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
+  const aboutUsSwiper = new Swiper('.about-us-swiper', {
+    slidesPerView: 'auto',
+    spaceBetween: 10,
+    centeredSlides: true,
+    loop: true,
+    navigation: {
+      nextEl: ".about-us__slider-wrapper .swiper-button-next",
+      prevEl: ".about-us__slider-wrapper .swiper-button-prev",
+    },
+    breakpoints: {
+      767: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        centeredSlides: false,
+      },
+    },
+  });
+  const blogPostSlider = new Swiper('.blog-post-swiper', {
+    slidesPerView: 'auto',
+    spaceBetween: 10,
+    centeredSlides: true,
+    loop: true,
+    navigation: {
+      nextEl: ".about-us__slider-wrapper .swiper-button-next",
+      prevEl: ".about-us__slider-wrapper .swiper-button-prev",
+    },
+    breakpoints: {
+      767: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        centeredSlides: false,
+      },
+      917: {
+        slidesPerView: 4,
+        spaceBetween: 20,
+        centeredSlides: false,
+      },
+      1205: {
+        slidesPerView: 5,
+        spaceBetween: 20,
+        centeredSlides: false,
+      },
+    },
+  });
 
-
-
-  // const sliders = document.querySelectorAll('.swiper-container');
-  // // createSwipe(reviewSlider, 2, 30);
-  // const slidersSwipe = [];
-  // sliders.forEach(el => {
-  //   let mySwiper = new Swiper(el, {
-  //     slidesPerView: 'auto',
-  //     // spaceBetween: 30,
-  //     loop: true,
-  //     pagination: {
-  //       el: el.querySelector('.swiper-pagination'),
-  //       clickable: true,
-  //     },
-
-  //   });
-  //   slidersSwipe.push(mySwiper);
-  // });
-  // console.log(sliders);
+  const relatedPostSwiper = new Swiper('.related-post__slider', {
+    slidesPerView: 1,
+    spaceBetween: 10,
+    // centeredSlides: false,
+    loop: true,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      560: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+        centeredSlides: false,
+      },
+      661: {
+        slidesPerView: 3,
+        spaceBetween: 10,
+        centeredSlides: false,
+      },
+      917: {
+        slidesPerView: 4,
+        spaceBetween: 30,
+        centeredSlides: false,
+      },
+    },
+  });
 
   const catalogSliderWrapper = document.querySelector('.catalog__slider-container');
 
@@ -538,10 +591,10 @@ document.addEventListener('DOMContentLoaded', function () {
         // This is index of current photoswipe slide
         let getCurrentIndex = gallery.getCurrentIndex();
         // Update position of the slider
-        if(slider) {
+        if (slider) {
           slider.slideTo(getCurrentIndex, false);
         }
-        
+
         // 2/2. Start swiper autoplay (on close - if swiper autoplay is true)
         // slider.autoplay.start();
       });
@@ -573,126 +626,13 @@ document.addEventListener('DOMContentLoaded', function () {
   // execute above function
 
   initPhotoSwipeFromDOM(".my-gallery", galleryTop);
+  initPhotoSwipeFromDOM(".about-us-gallery", aboutUsSwiper);
+  initPhotoSwipeFromDOM(".blog-post-gallery", blogPostSlider);
   initPhotoSwipeFromDOM(".ourWorks-gallery");
-
 
 });
 
-// class DynamicAdapt {
-//   // массив объектов
-//   elementsArray = [];
 
-//   init() {
-//     // массив DOM-элементов
-//     this.elements = [...document.querySelectorAll('[data-da]')];
-
-//     // наполнение elementsArray объктами
-//     this.elements.forEach((element) => {
-//       const data = element.dataset.da.trim();
-//       if (data !== '') {
-//         const dataArray = data.split(',');
-
-//         const oElement = {};
-//         oElement.element = element;
-//         oElement.parent = element.parentNode;
-//         oElement.destination = document.querySelector(`.${dataArray[0].trim()}`);
-//         oElement.breakpoint = dataArray[1] ? dataArray[1].trim() : '767';
-//         oElement.place = dataArray[2] ? dataArray[2].trim() : 'last';
-//         oElement.type = dataArray[3] ? dataArray[3].trim() : 'max';
-
-//         this.elementsArray.push(oElement);
-//       }
-//     });
-
-//     this.arraySort(this.elementsArray);
-
-//     // массив уникальных медиа-запросов
-//     this.mediaArray = this.elementsArray
-//       .map(({ type, breakpoint }) => `(${type}-width: ${breakpoint}px),${breakpoint}`)
-//       .filter((item, index, self) => self.indexOf(item) === index);
-
-//     // навешивание слушателя на медиа-запрос
-//     // и вызов обработчика при первом запуске
-//     this.mediaArray.forEach((item) => {
-//       const itemSplit = item.split(',');
-//       const media = window.matchMedia(itemSplit[0]);
-//       const breakpoint = itemSplit[1];
-//       media.addEventListener('change', this.mediaHandler.bind(this, media, breakpoint));
-//       this.mediaHandler.call(this, media, breakpoint);
-//     });
-//   }
-
-//   // Основная функция
-//   mediaHandler(media, breakpointMeida) {
-//     // массив объектов с подходящим брейкпоинтом
-//     const elementsFilter = this.elementsArray.filter(
-//       ({ breakpoint }) => breakpoint === breakpointMeida,
-//     );
-
-//     if (media.matches) {
-//       elementsFilter.forEach((oElement) => {
-//         // получение индекса внутри родителя
-//         oElement.index = this.indexInParent(
-//           oElement.parent, oElement.element,
-//         );
-//         this.moveTo(oElement.place, oElement.element, oElement.destination);
-//       });
-//     } else {
-//       elementsFilter.forEach(({ parent, element, index }) => {
-//         this.moveBack(parent, element, index);
-//       });
-//     }
-//   }
-
-//   // Функция перемещения
-//   moveTo(place, element, destination) {
-//     if (place === 'last' || place >= destination.children.length) {
-//       destination.append(element);
-//       return;
-//     }
-//     if (place === 'first') {
-//       destination.prepend(element);
-//       return;
-//     }
-//     destination.children[place].before(element);
-//   }
-
-//   // Функция возврата
-//   moveBack(parent, element, index) {
-//     if (parent.children[index] === undefined) {
-//       parent.append(element);
-//       return;
-//     }
-//     parent.children[index].before(element);
-//   }
-
-//   // Функция получения индекса внутри родителя
-//   indexInParent(parent, element) {
-//     return [...parent.children].indexOf(element);
-//   }
-
-//   // Функция сортировки массива по breakpoint и place по возрастанию
-//   arraySort(arr) {
-//     arr.sort((a, b) => {
-//       if (a.breakpoint === b.breakpoint) {
-//         if (a.place === b.place) {
-//           return 0;
-//         }
-//         if (a.place === 'first' || b.place === 'last') {
-//           return -1;
-//         }
-//         if (a.place === 'last' || b.place === 'first') {
-//           return 1;
-//         }
-//         return a.place - b.place;
-//       }
-//       return a.breakpoint - b.breakpoint;
-//     });
-//   }
-// }
-
-// const da = new DynamicAdapt();
-// da.init();
 
 
 /**
