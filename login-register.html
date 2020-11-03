@@ -1272,9 +1272,9 @@
     </div>
   </div>
 </div>
-    <div class="content">
+    <div class="content login-register">
       <section class="section catalog blog">
-        <div class="overlay" onclick="menu.closeMenu"></div>
+        <!-- <div class="overlay" onclick="menu.closeMenu"></div> -->
         <div class="container">
           <ul class="breadcrumb">
   <li class="breadcrumb__list">
@@ -1285,262 +1285,74 @@
   </li>
   <li class="breadcrumb__list">Catalog</li>
 </ul>
-          <div class="catalog__inner">
-            <div class="catalog__aside aside">
-              <div class="btn-close btn-close__filter box" onclick="menu.closeMenu">
-                <svg class="btn-close__btn">
-                  <use xlink:href="#close-icon"></use>
-                </svg>
+          <div class="catalog__inner login-register__inner">
+            <h2 class="section__title">
+              My account
+              <span class="section__line"></span>
+            </h2>
+            <div class="login-register__main">
+              <div class="login-register__columns">
+                <div class="login-register__item">
+                  <h3>Login to account</h3>
+                  <form action="#" class="form form__login">
+                    <div class="form__inner">
+                      <label class="form__row">
+                        <span>Email:</span>
+                        <input type="email" name="email" placeholder="John" data-validate-field="email">
+                      </label>
+                     
+                      <label class="form__row form__row-password">
+                        <span>Password:</span>
+                        <input type="password" name="password" placeholder="John" data-validate-field="password">
+                        <span class="password-icon">
+                          <svg class="icon password-hide">
+                            <use xlink:href="#hide-password"></use>
+                          </svg>
+                          <svg class="icon password-show">
+                            <use xlink:href="#show-password"></use>
+                          </svg>
+                        </span>
+                      </label>
+                      <div class="form__row  form__row-login">
+                        <div class="check">
+                          <label>
+                            <input class="check__input" type="checkbox" checked>
+                            <span class="check__box">
+                              <svg class="checked">
+                                <use xlink:href="#checked"></use>
+                              </svg>
+                            </span>
+                            <span class="check__name">Remember me</span>
+                          </label>
+                        </div>
+                        <a href="#">I forgot my password</a>
+                      </div>
+                      <button class="btn btn-red" type="submit">Log In</button>
+                    </div>
+                  </form>
+                </div>
               </div>
-              <div class="aside__item">
-                <h3 class="aside__title">
-                  Show posts
-                  <span class="aside__line"></span>
-                </h3>
-                <ul class="aside__list">
-                  <li>
-                    <a class="aside__link" href="#"> All posts</a>
-                  </li>
-                  <li>
-                    <a class="aside__link" href="#">Last week </a>
-                  </li>
-                  <li>
-                    <a class="aside__link" href="#">Last two weeks</a>
-                  </li>
-                  <li>
-                    <a class="aside__link" href="#">This year</a>
-                  </li>
-                </ul>
+              <div class="login-register__columns">
+                <div class="login-register__item">
+                  <h3>Register</h3>
+                  <form action="#" class="form form__register">
+                    <div class="form__inner">
+                      <label class="form__row">
+                        <span>Email adress:</span>
+                        <input type="email" name="email" placeholder="John" data-validate-field="email">
+                      </label>
+                      <div class="form__row form__row-text">
+                        <span>A password will sent to your email adress.</span>
+                        <p>Your personal dara will be used to support your experience throughtout this website, to
+                          manage acces to your account, and for other purposes described in our privacy policy.</p>
+                      </div>
+                      <button class="btn btn-red" type="submit">Register</button>
+                    </div>
+                  </form>
+                </div>
               </div>
-            </div>
-            <div class="catalog__filter filter-btn box" onclick="menu.openMenu">
-              <svg class="filter">
-                <use xlink:href="#filter"></use>
-              </svg>
-            </div>
-            <div class="catalog__main blog__main">
-              <h2 class="section__title">
-                Our blog
-                <span class="section__line"></span>
-              </h2>
 
-              <div class="blog__inner">
-                <div class="blog__columns">
-                  <div class="blog__item">
-                    <a href="#">
-                      <img src="./img/blog/blog-1.jpg" alt="" />
-                    </a>
-                    <h3 class="blog__item-title">
-                      <a href="#">How To: Frontal Bob Wig</a>
-                    </h3>
-                    <p class="blog__item-text">
-                      Frontal bob wigs are the newest summertime craze. Protect your hair from the Frontal bob wigs are
-                      the newest summertime craze. Protect your hair from th
-                    </p>
-                    <a href="#" class="btn btn-nobg">
-                      <span>More</span>
-                      <svg class="arrow-right-big ">
-                        <use xlink:href="#arrow-right-big"></use>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-                <div class="blog__columns">
-                  <div class="blog__item">
-                    <a href="#">
-                      <img src="./img/blog/blog-2.jpg" alt="" />
-                    </a>
-                    <h3 class="blog__item-title">
-                      <a href="#">How To: Frontal Bob Wig</a>
-                    </h3>
-                    <p class="blog__item-text">
-                      Frontal bob wigs are the newest summertime craze. Protect your hair from the Frontal bob wigs are
-                      the newest summertime craze. Protect your hair from th
-                    </p>
-                    <a href="#" class="btn btn-nobg">
-                      <span>More</span>
-                      <svg class="arrow-right-big ">
-                        <use xlink:href="#arrow-right-big"></use>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-                <div class="blog__columns">
-                  <div class="blog__item">
-                    <a href="#">
-                      <img src="./img/blog/blog-3.jpg" alt="" />
-                    </a>
-                    <h3 class="blog__item-title">
-                      <a href="#">How To: Frontal Bob Wig</a>
-                    </h3>
-                    <p class="blog__item-text">
-                      Frontal bob wigs are the newest summertime craze. Protect your hair from the Frontal bob wigs are
-                      the newest summertime craze. Protect your hair from th
-                    </p>
-                    <a href="#" class="btn btn-nobg">
-                      <span>More</span>
-                      <svg class="arrow-right-big ">
-                        <use xlink:href="#arrow-right-big"></use>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-                <div class="blog__columns">
-                  <div class="blog__item">
-                    <a href="#">
-                      <img src="./img/blog/blog-4.jpg" alt="" />
-                    </a>
-                    <h3 class="blog__item-title">
-                      <a href="#">How To: Frontal Bob Wig</a>
-                    </h3>
-                    <p class="blog__item-text">
-                      Frontal bob wigs are the newest summertime craze. Protect your hair from the
-                    </p>
-                    <a href="#" class="btn btn-nobg">
-                      <span>More</span>
-                      <svg class="arrow-right-big ">
-                        <use xlink:href="#arrow-right-big"></use>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-                <div class="blog__columns">
-                  <div class="blog__item">
-                    <a href="#">
-                      <img src="./img/blog/blog-5.jpg" alt="" />
-                    </a>
-                    <h3 class="blog__item-title">
-                      <a href="#">How To: Frontal Bob Wig</a>
-                    </h3>
-                    <p class="blog__item-text">
-                      Frontal bob wigs are the newest summertime craze. Protect your hair from the
-                    </p>
-                    <a href="#" class="btn btn-nobg">
-                      <span>More</span>
-                      <svg class="arrow-right-big ">
-                        <use xlink:href="#arrow-right-big"></use>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-                <div class="blog__columns">
-                  <div class="blog__item">
-                    <a href="#">
-                      <img src="./img/blog/blog-6.jpg" alt="" />
-                    </a>
-                    <h3 class="blog__item-title">
-                      <a href="#">How To: Frontal Bob Wig</a>
-                    </h3>
-                    <p class="blog__item-text">
-                      Frontal bob wigs are the newest summertime craze. Protect your hair from the
-                    </p>
-                    <a href="#" class="btn btn-nobg">
-                      <span>More</span>
-                      <svg class="arrow-right-big ">
-                        <use xlink:href="#arrow-right-big"></use>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-                <div class="blog__columns">
-                  <div class="blog__item">
-                    <a href="#">
-                      <img src="./img/blog/blog-7.jpg" alt="" />
-                    </a>
-                    <h3 class="blog__item-title">
-                      <a href="#">How To: Frontal Bob Wig</a>
-                    </h3>
-                    <p class="blog__item-text">
-                      Frontal bob wigs are the newest summertime craze. Protect your hair from the
-                    </p>
-                    <a href="#" class="btn btn-nobg">
-                      <span>More</span>
-                      <svg class="arrow-right-big ">
-                        <use xlink:href="#arrow-right-big"></use>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-                <div class="blog__columns">
-                  <div class="blog__item">
-                    <a href="#">
-                      <img src="./img/blog/blog-8.jpg" alt="" />
-                    </a>
-                    <h3 class="blog__item-title">
-                      <a href="#">How To: Frontal Bob Wig</a>
-                    </h3>
-                    <p class="blog__item-text">
-                      Frontal bob wigs are the newest summertime craze. Protect your hair from the
-                    </p>
-                    <a href="#" class="btn btn-nobg">
-                      <span>More</span>
-                      <svg class="arrow-right-big ">
-                        <use xlink:href="#arrow-right-big"></use>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-                <div class="blog__columns">
-                  <div class="blog__item">
-                    <a href="#">
-                      <img src="./img/blog/blog-1.jpg" alt="" />
-                    </a>
-                    <h3 class="blog__item-title">
-                      <a href="#">How To: Frontal Bob Wig</a>
-                    </h3>
-                    <p class="blog__item-text">
-                      Frontal bob wigs are the newest summertime craze. Protect your hair from the
-                    </p>
-                    <a href="#" class="btn btn-nobg">
-                      <span>More</span>
-                      <svg class="arrow-right-big ">
-                        <use xlink:href="#arrow-right-big"></use>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <ul class="pagination">
-                <li class="pagination__list">
-                  <a class="pagination__link pagination__link-prev pagination__link-arrow" href="#">
-                    <svg class="arrow-right-big ">
-                      <use xlink:href="#arrow-right-big"></use>
-                    </svg>
-                  </a>
-                </li>
-                <li class="pagination__list">
-                  <a class="pagination__link active" href="#">
-                    1
-                  </a>
-                </li>
-                <li class="pagination__list">
-                  <a class="pagination__link" href="#">
-                    2
-                  </a>
-                </li>
-                <li class="pagination__list">
-                  <a class="pagination__link" href="#">
-                    3
-                  </a>
-                </li>
-                <li class="pagination__list">
-                  <a class="pagination__link" href="#">
-                    ...
-                  </a>
-                </li>
-                <li class="pagination__list">
-                  <a class="pagination__link" href="#">
-                    76
-                  </a>
-                </li>
-                <li class="pagination__list">
-                  <a class="pagination__link pagination__link-next pagination__link-arrow" href="#">
-                    <svg class="arrow-right-big">
-                      <use xlink:href="#arrow-right-big"></use>
-                    </svg>
-                  </a>
-                </li>
-              </ul>
+
             </div>
           </div>
         </div>
@@ -1708,13 +1520,10 @@
 
 </div>
   <script src="./js/libs.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
-<script src="./js/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+  <script src="./js/script.js"></script>
 
-<script>
- const menu = new MenuOpenClose();
-</script>
 </body>
 
 </html>

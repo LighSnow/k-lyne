@@ -1272,9 +1272,9 @@
     </div>
   </div>
 </div>
-    <div class="content">
-      <section class="section catalog blog">
-        <div class="overlay" onclick="menu.closeMenu"></div>
+    <div class="content shopping-cart">
+      <section class="section shopping-cart__section">
+        <!-- <div class="overlay" onclick="menu.closeMenu"></div> -->
         <div class="container">
           <ul class="breadcrumb">
   <li class="breadcrumb__list">
@@ -1285,262 +1285,326 @@
   </li>
   <li class="breadcrumb__list">Catalog</li>
 </ul>
-          <div class="catalog__inner">
-            <div class="catalog__aside aside">
-              <div class="btn-close btn-close__filter box" onclick="menu.closeMenu">
-                <svg class="btn-close__btn">
-                  <use xlink:href="#close-icon"></use>
-                </svg>
+          <h2 class="section__title">
+            My shopping cart
+            <span class="section__line"></span>
+          </h2>
+          <div class="shopping-cart__inner">
+            <div class="shopping-cart__table table">
+              <div class="table__header">
+                <span class="table__header-title table__header-first">ORDER ITEM</span>
+                <span class="table__header-title table__header-second">QUANTITY</span>
+                <span class="table__header-title table__header-third">PRICE</span>
               </div>
-              <div class="aside__item">
-                <h3 class="aside__title">
-                  Show posts
-                  <span class="aside__line"></span>
-                </h3>
-                <ul class="aside__list">
-                  <li>
-                    <a class="aside__link" href="#"> All posts</a>
-                  </li>
-                  <li>
-                    <a class="aside__link" href="#">Last week </a>
-                  </li>
-                  <li>
-                    <a class="aside__link" href="#">Last two weeks</a>
-                  </li>
-                  <li>
-                    <a class="aside__link" href="#">This year</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="catalog__filter filter-btn box" onclick="menu.openMenu">
-              <svg class="filter">
-                <use xlink:href="#filter"></use>
-              </svg>
-            </div>
-            <div class="catalog__main blog__main">
-              <h2 class="section__title">
-                Our blog
-                <span class="section__line"></span>
-              </h2>
+              <div class="table__row">
+                <div class="table__item">
+                  <img src="./img/product-cart/product-cart-2.png" srcset="./img/product-cart/product-cart-2@2x.png"
+                    alt="" />
+                  <div class="table__item-body">
+                    <h3 class="table__item-header">Model Virgin Human Hair Lace Front Wig Galleria-ST14</h3>
+                    <div class="table__item-color">
+                      Color:
+                      <span>Natural</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="table__options">
+                  <div class="table__quantity">
+                    <div class="table__header">
+                      <span>Quantity</span>
+                    </div>
+                    <div class=" counter">
+                      <button class="counter__btn counter__btn-plus">+</button>
+                      <input type="text" class="counter__input" value="1">
+                      <button class="counter__btn counter__btn-minus">-</button>
+                    </div>
+                  </div>
 
-              <div class="blog__inner">
-                <div class="blog__columns">
-                  <div class="blog__item">
-                    <a href="#">
-                      <img src="./img/blog/blog-1.jpg" alt="" />
-                    </a>
-                    <h3 class="blog__item-title">
-                      <a href="#">How To: Frontal Bob Wig</a>
-                    </h3>
-                    <p class="blog__item-text">
-                      Frontal bob wigs are the newest summertime craze. Protect your hair from the Frontal bob wigs are
-                      the newest summertime craze. Protect your hair from th
-                    </p>
-                    <a href="#" class="btn btn-nobg">
-                      <span>More</span>
-                      <svg class="arrow-right-big ">
-                        <use xlink:href="#arrow-right-big"></use>
-                      </svg>
-                    </a>
+                  <div class="table__price">
+                    <div class="table__header">
+                      <span>price</span>
+                    </div>
+                    <span class="table__price-new">$28.99</span>
+                    <span class="table__price-old">$32.99</span>
                   </div>
                 </div>
-                <div class="blog__columns">
-                  <div class="blog__item">
-                    <a href="#">
-                      <img src="./img/blog/blog-2.jpg" alt="" />
-                    </a>
-                    <h3 class="blog__item-title">
-                      <a href="#">How To: Frontal Bob Wig</a>
-                    </h3>
-                    <p class="blog__item-text">
-                      Frontal bob wigs are the newest summertime craze. Protect your hair from the Frontal bob wigs are
-                      the newest summertime craze. Protect your hair from th
-                    </p>
-                    <a href="#" class="btn btn-nobg">
-                      <span>More</span>
-                      <svg class="arrow-right-big ">
-                        <use xlink:href="#arrow-right-big"></use>
-                      </svg>
-                    </a>
+                <a class="table__delete" href="#">
+                  <svg class="icon icon-trash">
+                    <use xlink:href="#trash"></use>
+                  </svg>
+                </a>
+              </div>
+              <div class="table__row">
+                <div class="table__item">
+                  <img src="./img/product-cart/product-cart-2.png" srcset="./img/product-cart/product-cart-2@2x.png"
+                    alt="" />
+                  <div class="table__item-body">
+                    <h3 class="table__item-header">Model Virgin Human Hair Lace Front Wig Galleria-ST14</h3>
+                    <div class="table__item-color">
+                      Color:
+                      <span>Natural</span>
+                    </div>
                   </div>
                 </div>
-                <div class="blog__columns">
-                  <div class="blog__item">
-                    <a href="#">
-                      <img src="./img/blog/blog-3.jpg" alt="" />
-                    </a>
-                    <h3 class="blog__item-title">
-                      <a href="#">How To: Frontal Bob Wig</a>
-                    </h3>
-                    <p class="blog__item-text">
-                      Frontal bob wigs are the newest summertime craze. Protect your hair from the Frontal bob wigs are
-                      the newest summertime craze. Protect your hair from th
-                    </p>
-                    <a href="#" class="btn btn-nobg">
-                      <span>More</span>
-                      <svg class="arrow-right-big ">
-                        <use xlink:href="#arrow-right-big"></use>
-                      </svg>
-                    </a>
+                <div class="table__options">
+                  <div class="table__quantity">
+                    <div class="table__header">
+                      <span>Quantity</span>
+                    </div>
+                    <div class=" counter">
+                      <button class="counter__btn counter__btn-plus">+</button>
+                      <input type="text" class="counter__input" value="1">
+                      <button class="counter__btn counter__btn-minus">-</button>
+                    </div>
+                  </div>
+
+                  <div class="table__price">
+                    <div class="table__header">
+                      <span>price</span>
+                    </div>
+                    <span class="table__price-new">$28.99</span>
+                    <span class="table__price-old">$32.99</span>
                   </div>
                 </div>
-                <div class="blog__columns">
-                  <div class="blog__item">
-                    <a href="#">
-                      <img src="./img/blog/blog-4.jpg" alt="" />
-                    </a>
-                    <h3 class="blog__item-title">
-                      <a href="#">How To: Frontal Bob Wig</a>
-                    </h3>
-                    <p class="blog__item-text">
-                      Frontal bob wigs are the newest summertime craze. Protect your hair from the
-                    </p>
-                    <a href="#" class="btn btn-nobg">
-                      <span>More</span>
-                      <svg class="arrow-right-big ">
-                        <use xlink:href="#arrow-right-big"></use>
-                      </svg>
-                    </a>
+                <a class="table__delete" href="#">
+                  <svg class="icon icon-trash">
+                    <use xlink:href="#trash"></use>
+                  </svg>
+                </a>
+              </div>
+              <div class="table__row">
+                <div class="table__item">
+                  <img src="./img/product-cart/product-cart-2.png" srcset="./img/product-cart/product-cart-2@2x.png"
+                    alt="" />
+                  <div class="table__item-body">
+                    <h3 class="table__item-header">Model Virgin Human Hair Lace Front Wig Galleria-ST14</h3>
+                    <div class="table__item-color">
+                      Color:
+                      <span>Natural</span>
+                    </div>
                   </div>
                 </div>
-                <div class="blog__columns">
-                  <div class="blog__item">
-                    <a href="#">
-                      <img src="./img/blog/blog-5.jpg" alt="" />
-                    </a>
-                    <h3 class="blog__item-title">
-                      <a href="#">How To: Frontal Bob Wig</a>
-                    </h3>
-                    <p class="blog__item-text">
-                      Frontal bob wigs are the newest summertime craze. Protect your hair from the
-                    </p>
-                    <a href="#" class="btn btn-nobg">
-                      <span>More</span>
-                      <svg class="arrow-right-big ">
-                        <use xlink:href="#arrow-right-big"></use>
-                      </svg>
-                    </a>
+                <div class="table__options">
+                  <div class="table__quantity">
+                    <div class="table__header">
+                      <span>Quantity</span>
+                    </div>
+                    <div class=" counter">
+                      <button class="counter__btn counter__btn-plus">+</button>
+                      <input type="text" class="counter__input" value="1">
+                      <button class="counter__btn counter__btn-minus">-</button>
+                    </div>
+                  </div>
+
+                  <div class="table__price">
+                    <div class="table__header">
+                      <span>price</span>
+                    </div>
+                    <span class="table__price-new">$28.99</span>
+                    <span class="table__price-old">$32.99</span>
                   </div>
                 </div>
-                <div class="blog__columns">
-                  <div class="blog__item">
-                    <a href="#">
-                      <img src="./img/blog/blog-6.jpg" alt="" />
-                    </a>
-                    <h3 class="blog__item-title">
-                      <a href="#">How To: Frontal Bob Wig</a>
-                    </h3>
-                    <p class="blog__item-text">
-                      Frontal bob wigs are the newest summertime craze. Protect your hair from the
-                    </p>
-                    <a href="#" class="btn btn-nobg">
-                      <span>More</span>
-                      <svg class="arrow-right-big ">
-                        <use xlink:href="#arrow-right-big"></use>
-                      </svg>
-                    </a>
+                <a class="table__delete" href="#">
+                  <svg class="icon icon-trash">
+                    <use xlink:href="#trash"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="shopping-cart__aside aside">
+              <div class="aside__item">
+                <div class="aside__item-total">
+                  <h3>Total products:</h3>
+                  <span>$28.99</span>
+                </div>
+                <div class="aside__item-total">
+                  <h3>Total:</h3>
+                  <span>$28.99</span>
+                </div>
+                <span class="taxes">* Before taxes</span>
+                <a href="#" class="btn btn-nobg">
+                  <svg class="arrow-right-big">
+                    <use xlink:href="#arrow-right-big"></use>
+                  </svg>
+                  <span>Continue shopping</span>
+                </a>
+                <a href="#" class="btn btn-red">
+                  <span>Check out</span>
+                  <svg class="arrow-right-big">
+                    <use xlink:href="#arrow-right-big"></use>
+                  </svg>
+
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="slider-card__inner">
+
+            <div class="slider-card__row">
+              <div class="shopping-cart__slider">
+                <h2 class="section__title">
+                  You might be interested
+                  <span class="section__line"></span>
+                </h2>
+                <div class="swiper-wrapper">
+                  <div class="slider-card__columns swiper-slide">
+                    <div class="slider-card__item">
+                      <a href="#">
+                        <img src="./img/catalog/catalog-image7.png" srcset="./img/catalog/catalog-image7@2x.png" alt="Image description" />
+                      </a>
+      
+                      <a class="slider-card__title" href="#">
+                        Сlassic wig with curls
+                      </a>
+                      <div class="slider-card__bottom">
+                        <div class="slider-card__price">
+                          <span class="slider-card__price-old">$32.99</span> <span
+                            class="slider-card__price-new">$28.99</span>
+                        </div>
+                        <a class="slider-card__btn btn btn-nobg" href="#">
+                          <svg class=" icon purchases-icon">
+                            <use xlink:href="#purchases"></use>
+                          </svg>
+                          <span>Add to cart</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="slider-card__columns swiper-slide">
+                    <div class="slider-card__item">
+                      <a href="#">
+                        <img src="./img/catalog/catalog-image8.png" srcset="./img/catalog/catalog-image8@2x.png" alt="Image description" />
+                      </a>
+      
+                      <a class="slider-card__title" href="#">
+                        Сlassic wig with curls
+                      </a>
+                      <div class="slider-card__bottom">
+                        <div class="slider-card__price">
+                          <span class="slider-card__price-old">$32.99</span> <span
+                            class="slider-card__price-new">$28.99</span>
+                        </div>
+                        <a class="slider-card__btn btn btn-nobg" href="#">
+                          <svg class=" icon purchases-icon">
+                            <use xlink:href="#purchases"></use>
+                          </svg>
+                          <span>Add to cart</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="slider-card__columns swiper-slide">
+                    <div class="slider-card__item">
+                      <a href="#">
+                        <img src="./img/catalog/catalog-image1.png" srcset="./img/catalog/catalog-image1@2x.png" alt="Image description" />
+                      </a>
+      
+                      <a class="slider-card__title" href="#">
+                        Сlassic wig with curls
+                      </a>
+                      <div class="slider-card__bottom">
+                        <div class="slider-card__price">
+                          <span class="slider-card__price-old">$32.99</span> <span
+                            class="slider-card__price-new">$28.99</span>
+                        </div>
+                        <a class="slider-card__btn btn btn-nobg" href="#">
+                          <svg class=" icon purchases-icon">
+                            <use xlink:href="#purchases"></use>
+                          </svg>
+                          <span>Add to cart</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="slider-card__columns swiper-slide">
+                    <div class="slider-card__item">
+                      <a href="#">
+                        <img src="./img/catalog/catalog-image2.png" srcset="./img/catalog/catalog-image2@2x.png" alt="Image description" />
+                      </a>
+      
+                      <a class="slider-card__title" href="#">
+                        Сlassic wig with curls
+                      </a>
+                      <div class="slider-card__bottom">
+                        <div class="slider-card__price">
+                          <span class="slider-card__price-old">$32.99</span> <span
+                            class="slider-card__price-new">$28.99</span>
+                        </div>
+                        <a class="slider-card__btn btn btn-nobg" href="#">
+                          <svg class=" icon purchases-icon">
+                            <use xlink:href="#purchases"></use>
+                          </svg>
+                          <span>Add to cart</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="slider-card__columns swiper-slide">
+                    <div class="slider-card__item">
+                      <a href="#">
+                        <img src="./img/catalog/catalog-image3.png" srcset="./img/catalog/catalog-image3@2x.png" alt="Image description" />
+                      </a>
+      
+                      <a class="slider-card__title" href="#">
+                        Сlassic wig with curls
+                      </a>
+                      <div class="slider-card__bottom">
+                        <div class="slider-card__price">
+                          <span class="slider-card__price-old">$32.99</span> <span
+                            class="slider-card__price-new">$28.99</span>
+                        </div>
+                        <a class="slider-card__btn btn btn-nobg" href="#">
+                          <svg class=" icon purchases-icon">
+                            <use xlink:href="#purchases"></use>
+                          </svg>
+                          <span>Add to cart</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="slider-card__columns swiper-slide">
+                    <div class="slider-card__item">
+                      <a href="#">
+                        <img src="./img/catalog/catalog-image4.png" srcset="./img/catalog/catalog-image4@2x.png" alt="Image description" />
+                      </a>
+      
+                      <a class="slider-card__title" href="#">
+                        Сlassic wig with curls
+                      </a>
+                      <div class="slider-card__bottom">
+                        <div class="slider-card__price">
+                          <span class="slider-card__price-old">$32.99</span> <span
+                            class="slider-card__price-new">$28.99</span>
+                        </div>
+                        <a class="slider-card__btn btn btn-nobg" href="#">
+                          <svg class=" icon purchases-icon">
+                            <use xlink:href="#purchases"></use>
+                          </svg>
+                          <span>Add to cart</span>
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="blog__columns">
-                  <div class="blog__item">
-                    <a href="#">
-                      <img src="./img/blog/blog-7.jpg" alt="" />
-                    </a>
-                    <h3 class="blog__item-title">
-                      <a href="#">How To: Frontal Bob Wig</a>
-                    </h3>
-                    <p class="blog__item-text">
-                      Frontal bob wigs are the newest summertime craze. Protect your hair from the
-                    </p>
-                    <a href="#" class="btn btn-nobg">
-                      <span>More</span>
-                      <svg class="arrow-right-big ">
-                        <use xlink:href="#arrow-right-big"></use>
-                      </svg>
-                    </a>
+                <!-- If we need pagination -->
+                <div class="catalog__slider-pagination"></div>
+
+                <div class="catalog__slider-card__btns">
+                  <div class="swiper-button-prev slider__btn box">
+                    <svg class="arrow-right">
+                      <use xlink:href="#arrow-right"></use>
+                    </svg>
                   </div>
-                </div>
-                <div class="blog__columns">
-                  <div class="blog__item">
-                    <a href="#">
-                      <img src="./img/blog/blog-8.jpg" alt="" />
-                    </a>
-                    <h3 class="blog__item-title">
-                      <a href="#">How To: Frontal Bob Wig</a>
-                    </h3>
-                    <p class="blog__item-text">
-                      Frontal bob wigs are the newest summertime craze. Protect your hair from the
-                    </p>
-                    <a href="#" class="btn btn-nobg">
-                      <span>More</span>
-                      <svg class="arrow-right-big ">
-                        <use xlink:href="#arrow-right-big"></use>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-                <div class="blog__columns">
-                  <div class="blog__item">
-                    <a href="#">
-                      <img src="./img/blog/blog-1.jpg" alt="" />
-                    </a>
-                    <h3 class="blog__item-title">
-                      <a href="#">How To: Frontal Bob Wig</a>
-                    </h3>
-                    <p class="blog__item-text">
-                      Frontal bob wigs are the newest summertime craze. Protect your hair from the
-                    </p>
-                    <a href="#" class="btn btn-nobg">
-                      <span>More</span>
-                      <svg class="arrow-right-big ">
-                        <use xlink:href="#arrow-right-big"></use>
-                      </svg>
-                    </a>
+                  <svg class="swipe-icon">
+                    <use xlink:href="#swipe-svg"></use>
+                  </svg>
+                  <div class="swiper-button-next slider__btn box">
+                    <svg class="arrow-right">
+                      <use xlink:href="#arrow-right"></use>
+                    </svg>
                   </div>
                 </div>
               </div>
-              <ul class="pagination">
-                <li class="pagination__list">
-                  <a class="pagination__link pagination__link-prev pagination__link-arrow" href="#">
-                    <svg class="arrow-right-big ">
-                      <use xlink:href="#arrow-right-big"></use>
-                    </svg>
-                  </a>
-                </li>
-                <li class="pagination__list">
-                  <a class="pagination__link active" href="#">
-                    1
-                  </a>
-                </li>
-                <li class="pagination__list">
-                  <a class="pagination__link" href="#">
-                    2
-                  </a>
-                </li>
-                <li class="pagination__list">
-                  <a class="pagination__link" href="#">
-                    3
-                  </a>
-                </li>
-                <li class="pagination__list">
-                  <a class="pagination__link" href="#">
-                    ...
-                  </a>
-                </li>
-                <li class="pagination__list">
-                  <a class="pagination__link" href="#">
-                    76
-                  </a>
-                </li>
-                <li class="pagination__list">
-                  <a class="pagination__link pagination__link-next pagination__link-arrow" href="#">
-                    <svg class="arrow-right-big">
-                      <use xlink:href="#arrow-right-big"></use>
-                    </svg>
-                  </a>
-                </li>
-              </ul>
             </div>
           </div>
         </div>
@@ -1708,13 +1772,10 @@
 
 </div>
   <script src="./js/libs.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
-<script src="./js/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+  <script src="./js/script.js"></script>
 
-<script>
- const menu = new MenuOpenClose();
-</script>
 </body>
 
 </html>

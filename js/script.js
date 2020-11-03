@@ -386,6 +386,37 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // const shoppingSiderCard = document.querySelector('.shopping-cart__slider');
+
+  let shoppingCardSlider = new Swiper('.shopping-cart__slider', {
+    slidesPerView: 1,
+    // spaceBetween: 20,
+    autoHeight: true,
+    loop: true,
+    pagination: {
+      el: '.catalog__slider-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.catalog__slider-card__btns .swiper-button-next',
+      prevEl: '.catalog__slider-card__btns .swiper-button-prev',
+    },
+    breakpoints: {
+      575: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      767: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+      917: {
+        slidesPerView: 4,
+        spaceBetween: 30,
+      },
+    },
+  });
+
 
   // 2 of 4 : PHOTOSWIPE #######################################
   // https://photoswipe.com/documentation/getting-started.html //
@@ -630,9 +661,94 @@ document.addEventListener('DOMContentLoaded', function () {
   initPhotoSwipeFromDOM(".blog-post-gallery", blogPostSlider);
   initPhotoSwipeFromDOM(".ourWorks-gallery");
 
+
+  const passwordToggle = () => {
+    const passwordBtn = document.querySelectorAll('.password-icon');
+    passwordBtn.forEach(btn => {
+      const input = btn.parentElement.querySelector('input[type="password"]');
+      btn.addEventListener('click', () => {
+        if (input.type === 'password') {
+          input.type = 'text';
+          btn.classList.add('active');
+        } else {
+          input.type = 'password';
+          btn.classList.remove('active');
+        }
+      });
+    });
+  };
+
+
+  passwordToggle();
+
+
+
+
+
 });
 
 
+
+// let validateForms = function (selector, rules) {
+//   new window.JustValidate(selector, {
+//     rules: rules
+//   });
+// };
+
+// validateForms('.form', {
+//   name: {
+//     required: true,
+//     minLength: 3,
+//   },
+//   email: {
+//     required: true
+//   },
+//   surname: {
+//     required: true,
+//     minLength: 3,
+//   },
+//   password: {
+//     required: true,
+//     password: true,
+//   },
+//   repassword: {
+//     required: true,
+//     password: true,
+//   },
+// });
+
+// validateForms('.form__register', {
+//   email: {
+//     required: true
+//   },
+//   name: {
+//     required: true,
+//     minLength: 3,
+//   },
+//   surname: {
+//     required: true,
+//     minLength: 3,
+//   },
+//   password: {
+//     required: true,
+//     password: true,
+//   },
+//   repassword: {
+//     required: true,
+//     password: true,
+//   },
+// });
+
+// validateForms('.form__login', {
+//   email: {
+//     required: true,
+//     email: true,
+//   },
+//   password: {
+//     required: true,
+//     password: true,
+//   },
+// });
 
 
 /**
@@ -730,6 +846,10 @@ counterBtn.forEach(btn => {
     }
   });
 });
+
+
+
+
 
 
 
