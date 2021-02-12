@@ -558,7 +558,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       items = parseThumbnailElements(galleryElement);
 
-      // #################### 3/4 define photoswipe options (if needed) #################### 
+      // #################### 3/4 define photoswipe options (if needed) ####################
       // https://photoswipe.com/documentation/options.html //
       options = {
         /* "showHideOpacity" uncomment this If dimensions of your small thumbnail don't match dimensions of large image */
@@ -816,10 +816,20 @@ class MenuOpenClose {
 }
 
 const counterBtn = document.querySelectorAll('.counter__btn');
+let input = document.querySelector('.counter__input');
+input.addEventListener('change', () => {
+  if (input.value.length > 2) {
+    input.value = 99;
+  }
+});
+console.log(input);
 
 counterBtn.forEach(btn => {
   btn.addEventListener('click', (e) => {
     let input = btn.parentElement.querySelector('.counter__input');
+    if (input.value >= 99) {
+      input.value = 0;
+    }
     // const plus = document.querySelector('.counter__btn-plus');
 
     // if (plus.contains(e.target)) {
@@ -840,15 +850,13 @@ counterBtn.forEach(btn => {
         input.value++;
         break;
       case "minus":
-        if (input.value > 1)
+        if (input.value > 1) {
           input.value--;
+        }
         break;
     }
   });
 });
-
-
-
 
 
 
