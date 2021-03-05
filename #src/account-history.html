@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+@@include('_head.html')
+
+<body>
+  @@include('_sprites.html')
+  <div class="wrapper">
+    @@include('_header.html')
+    @@include('_stickyheader.html')
+    <div class="content user-info">
+      <section class="section account-history">
+        <div class="overlay" onclick="menu.closeMenu"></div>
+        <div class="container">
+          @@include('_breadcrumb.html')
+          <div class="catalog__inner user-info__inner account-history__inner">
+            <div class="catalog__aside aside">
+              <div class="btn-close btn-close__filter box" onclick="menu.closeMenu">
+                <svg class="btn-close__btn">
+                  <use xlink:href="#close-icon"></use>
+                </svg>
+              </div>
+              <div class="aside__item">
+                <ul class="aside__list">
+                  <li>
+                    <a class="aside__link " href="account-user-info.html">
+                      <svg class="arrow-right">
+                        <use xlink:href="#arrow-right"></use>
+                      </svg>
+                      <span>My Profile</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="aside__link active" href="account-history.html">
+                      <svg class="arrow-right">
+                        <use xlink:href="#arrow-right"></use>
+                      </svg>
+                      <span>Order History</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="account-history__main">
+              <h2 class="section__title">
+                Order history
+                <span class="section__line"></span>
+              </h2>
+              <div class="account-history__table table">
+                <div class="table">
+                  <div class="table__header">
+                    <span class="table__header-title table__header-first">#</span>
+                    <span class="table__header-title table__header-second">date</span>
+                    <span class="table__header-title table__header-third">total</span>
+                    <span class="table__header-title table__header-four">status</span>
+                    <span class="table__header-title table__header-five">actions</span>
+                  </div>
+
+                  <div class="table__row">
+                    <div class="table__number">
+                      <span>#</span>
+                      7051476
+                    </div>
+                   <div class="table__date">
+                     <span>Date</span>
+                     29 October 2020
+                    </div>
+                    <div class="table__total">
+                      <span>Total</span>
+                      $299
+                    </div>
+                    <div class="table__status">
+                      <span>Status</span>
+                      Completed
+                    </div>
+                    <div class="table__actions">
+                      <span>Actions</span>
+                      <a href="account-history-order.html">
+                     <span>View</span>
+                      <svg class="icon password-show">
+                        <use xlink:href="#show-password"></use>
+                      </svg>
+                    </a>
+                    </div>
+                  </div>
+                  <div class="table__row">
+                    <div class="table__number">
+                      <span>#</span>
+                      7051476
+                    </div>
+                   <div class="table__date">
+                     <span>Date</span>
+                     29 October 2020
+                    </div>
+                    <div class="table__total">
+                      <span>Total</span>
+                      $299
+                    </div>
+                    <div class="table__status">
+                      <span>Status</span>
+                      Completed
+                    </div>
+                    <div class="table__actions">
+                      <span>Actions</span>
+                      <a href="account-history-order.html">
+                     <span>View</span>
+                      <svg class="icon password-show">
+                        <use xlink:href="#show-password"></use>
+                      </svg>
+                    </a>
+                    </div>
+                  </div>
+                  <div class="table__row">
+                    <div class="table__number">
+                      <span>#</span>
+                      7051476
+                    </div>
+                   <div class="table__date">
+                     <span>Date</span>
+                     29 October 2020
+                    </div>
+                    <div class="table__total">
+                      <span>Total</span>
+                      $299
+                    </div>
+                    <div class="table__status">
+                      <span>Status</span>
+                      Completed
+                    </div>
+                    <div class="table__actions">
+                      <a href="account-history-order.html">
+                     <span>View</span>
+                      <svg class="icon password-show">
+                        <use xlink:href="#show-password"></use>
+                      </svg>
+                    </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    </div>
+    @@include('_footer.html')
+  </div>
+  @@include('_photoswipe.html')
+  @@include('_scripts.html')
+</body>
+
+</html>

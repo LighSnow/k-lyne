@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+@@include('_head.html')
+
+<body>
+  @@include('_sprites.html')
+  <div class="wrapper">
+    @@include('_header.html')
+    @@include('_stickyheader.html')
+    <div class="content user-info">
+      <section class="section account-history-order">
+        <div class="overlay" onclick="menu.closeMenu"></div>
+        <div class="container">
+          @@include('_breadcrumb.html')
+          <div class="catalog__inner user-info__inner account-history-order__inner">
+            <div class="catalog__aside aside">
+              <div class="btn-close btn-close__filter box" onclick="menu.closeMenu">
+                <svg class="btn-close__btn">
+                  <use xlink:href="#close-icon"></use>
+                </svg>
+              </div>
+              <div class="aside__item">
+                <ul class="aside__list">
+                  <li>
+                    <a class="aside__link " href="account-user-info.html">
+                      <svg class="arrow-right">
+                        <use xlink:href="#arrow-right"></use>
+                      </svg>
+                      <span>My Profile</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="aside__link active" href="account-history.html">
+                      <svg class="arrow-right">
+                        <use xlink:href="#arrow-right"></use>
+                      </svg>
+                      <span>Order History</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="account-history-order__main">
+              <h2 class="section__title">
+                Order #6776447
+                <span>Order details</span>
+              </h2>
+              <div class="account-history-order__table table">
+                <div class="table">
+                  <div class="table__header">
+                    <span class="table__header-title table__header-first">Product</span>
+                    <span class="table__header-title table__header-second">total</span>
+                  </div>
+
+                  <div class="table__row">
+                    <div class="table__item">
+                      <div class="table__item-body">
+                        <h3 class="table__item-header">Model Virgin Human Hair Lace Front Wig Galleria-ST14</h3>
+                        <div class="table__item-color">
+                          Color:
+                          <span>Natural</span>
+                        </div>
+                      </div>
+                      <div class="table__item-count">
+                        x1
+                      </div>
+                    </div>
+                    <div class="table__options">
+                      <div class="table__price">
+                        <div class="table__header">
+                          <span>price</span>
+                        </div>
+                        $128.99
+                      </div>
+                    </div>
+                  </div>
+                  <div class="table__row">
+                    <div class="table__item">
+                      <div class="table__item-body">
+                        <h3 class="table__item-header">Model Virgin Human Hair Lace Front Wig Galleria-ST14</h3>
+                        <div class="table__item-color">
+                          Color:
+                          <span>Natural</span>
+                        </div>
+                      </div>
+                      <div class="table__item-count">
+                        x1
+                      </div>
+                    </div>
+                    <div class="table__options">
+                      <div class="table__price">
+                        <div class="table__header">
+                          <span>price</span>
+                        </div>
+                        $128.99
+                      </div>
+                    </div>
+                  </div>
+                  <div class="table__row">
+                    <div class="table__item">
+                      <div class="table__item-body">
+                        <h3 class="table__item-header">Model Virgin Human Hair Lace Front Wig Galleria-ST14</h3>
+                        <div class="table__item-color">
+                          Color:
+                          <span>Natural</span>
+                        </div>
+                      </div>
+                      <div class="table__item-count">
+                        x1
+                      </div>
+                    </div>
+                    <div class="table__options">
+                      <div class="table__price">
+                        <div class="table__header">
+                          <span>price</span>
+                        </div>
+                        $128.99
+                      </div>
+                    </div>
+                  </div>
+                  <div class="table__footer">
+                    <div class="table__footer-item">
+                      <h3>Subtotal:</h3>
+                      <span>$366.95</span>
+                    </div>
+                    <div class="table__footer-item">
+                      <h3>Shipping:</h3>
+                      <span>Flat Rate</span>
+                    </div>
+                    <div class="table__footer-item">
+                      <h3>Payment method:</h3>
+                      <span>Credit Card (Stripe)</span>
+                    </div>
+                    <div class="table__footer-item">
+                      <h3>Total:</h3>
+                      <span>$366.95</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="account-history-order__address">
+                <div class="account-history-order__columns">
+                  <div class="account-history-order__item">
+                    <h3>Billing adress</h3>
+                    <span>John Doe </span>
+                    <span>malti </span>
+                    <span>balti, AK 31000 </span>
+                    <span>United States (US) </span>
+                    <span>555 78 56 </span>
+                  </div>
+                  <div class="account-history-order__item">
+                    <h3>Shipping adress</h3>
+                    <span>John Doe </span>
+                    <span>malti </span>
+                    <span>balti, AK 31000 </span>
+                    <span>United States (US) </span>
+                    <span>555 78 56 </span>
+                  </div>
+                </div>
+                <a href="#" class="btn btn-red">
+                  Repeat Order
+                  <svg class="icon icon-repeat">
+                    <use xlink:href="#repeat"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    </div>
+    @@include('_footer.html')
+  </div>
+  @@include('_photoswipe.html')
+  @@include('_scripts.html')
+</body>
+
+</html>

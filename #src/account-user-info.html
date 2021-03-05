@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+@@include('_head.html')
+
+<body>
+  @@include('_sprites.html')
+  <div class="wrapper">
+    @@include('_header.html')
+    @@include('_stickyheader.html')
+    <div class="content user-info">
+      <section class="section blog">
+        <div class="overlay" onclick="menu.closeMenu"></div>
+        <div class="container">
+          @@include('_breadcrumb.html')
+          <div class="catalog__inner user-info__inner">
+            <div class="catalog__aside aside">
+              <div class="btn-close btn-close__filter box" onclick="menu.closeMenu">
+                <svg class="btn-close__btn">
+                  <use xlink:href="#close-icon"></use>
+                </svg>
+              </div>
+              <div class="aside__item">
+                <ul class="aside__list">
+                  <li>
+                    <a class="aside__link active" href="account-user-info.html">
+                      <svg class="arrow-right">
+                        <use xlink:href="#arrow-right"></use>
+                      </svg>
+                      <span>My Profile</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="aside__link " href="account-history.html">
+                      <svg class="arrow-right">
+                        <use xlink:href="#arrow-right"></use>
+                      </svg>
+                      <span>Order History</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="user-info__main">
+              <h2 class="section__title">
+                My profile
+                <span class="section__line"></span>
+              </h2>
+              <form action="#" class="form form__user-info">
+                <div class="form__inner">
+                  <label class="form__row">
+                    <span>Name:</span>
+                    <input type="text" name="name" placeholder="John" data-validate-field="name">
+                  </label>
+                  <label class="form__row">
+                    <span>Surname:</span>
+                    <input type="text" name="surname" placeholder="Doe" data-validate-field="surname">
+                  </label>
+                  <label class="form__row form__row-password">
+                    <span>Password:</span>
+                    <input type="password" name="password" placeholder="John" data-validate-field="password">
+                    <span class="password-icon">
+                      <svg class="icon password-hide">
+                        <use xlink:href="#hide-password"></use>
+                      </svg>
+                      <svg class="icon password-show">
+                        <use xlink:href="#show-password"></use>
+                      </svg>
+                    </span>
+                  </label>
+                  <label class="form__row form__row-password" >
+                    <span>Repeat password:</span>
+                    <input type="password" name="repassword" placeholder="qwerty123"
+                    data-validate-field="repassword">
+                    <span class="password-icon">
+                      <svg class="icon password-hide">
+                        <use xlink:href="#hide-password"></use>
+                      </svg>
+                      <svg class="icon password-show">
+                        <use xlink:href="#show-password"></use>
+                      </svg>
+                    </span>
+                  </label>
+                  <label class="form__row">
+                    <span>City:</span>
+                    <input type="text" name="city" placeholder="Denver">
+                  </label>
+                  <label class="form__row">
+                    <span>Adress:</span>
+                    <input type="text" name="adress" placeholder="E Egbert St, Brighton, 6564">
+                  </label>
+                  <button class="btn btn-red" type="submit">Save changes</button>
+                </div>
+              </form>
+              <!-- <form action="#" class="js-form form">
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="name">Enter your name</label>
+                    <input type="text" class="form__input form-control" placeholder="Enter your name" autocomplete="off"
+                      data-validate-field="name" name="name" >
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="email">Enter your email</label>
+                    <input type="email" class="form__input form-control" placeholder="Enter your email"
+                      autocomplete="off" data-validate-field="email" name="email" >
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="password">Enter your password</label>
+                  <input type="password" class="form__input form-control" placeholder="Enter your password"
+                    autocomplete="off" data-validate-field="password" name="password">
+                </div>
+                <div class="form-group">
+                  <label for="password">Enter your text</label>
+                  <textarea name="msg" cols="30" rows="10" class="form__textarea form-control"
+                    data-validate-field="text" ></textarea>
+                </div>
+                <div class="form-group">
+                  <input type="checkbox" id="checkbox" class="form__checkbox" data-validate-field="checkbox"
+                    checked><label for="checkbox">I agree</label>
+                </div>
+                <div class="form-group">
+                  <label><input type="checkbox" class="form__checkbox" data-validate-field="checkbox2" checked>I
+                    agree</label>
+                </div>
+                <div class="form-group">
+                  <label><input type="radio" name="radio" class="form__radio" data-validate-field="radio">Male</label>
+                  <br>
+                  <label><input type="radio" name="radio" class="form__radio" data-validate-field="radio">Female</label>
+                </div>
+                <button class="form__btn btn btn-primary">SUBMIT</button>
+              </form> -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    </div>
+    @@include('_footer.html')
+  </div>
+  @@include('_photoswipe.html')
+  @@include('_scripts.html')
+</body>
+
+</html>
